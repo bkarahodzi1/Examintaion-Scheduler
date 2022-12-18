@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Examination {
+public class Examination implements Id{
     private int id;
     private String diagnosis, treatment;
 

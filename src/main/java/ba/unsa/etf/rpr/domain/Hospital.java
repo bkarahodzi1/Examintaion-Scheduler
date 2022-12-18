@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Hospital {
+public class Hospital implements Id{
     private int id,doctors;
     private String name, place, address, phone_num;
     private boolean parking;

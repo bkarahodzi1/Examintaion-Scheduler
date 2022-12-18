@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Date;
 import java.util.Objects;
 
-public class Patient {
+public class Patient implements Id{
     private int id;
     private String name,surname,place,address,phone_num;
     private Date brith_date;

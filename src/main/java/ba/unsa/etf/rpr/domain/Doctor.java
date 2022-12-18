@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Doctor {
+public class Doctor implements Id {
     private int id, seniority;
     private String name, surname, phone_num, specialization;
 

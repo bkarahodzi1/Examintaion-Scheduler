@@ -144,7 +144,7 @@ public abstract class MainDao<T extends Id> {
                 questions.append(",");
             }
         }
-        return new AbstractMap.SimpleEntry<String,String>(columns.toString(), questions.toString());
+        return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
 
     private String prepareUpdateParts(Map<String, Object> row){

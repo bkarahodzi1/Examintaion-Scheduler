@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
-import ba.unsa.etf.rpr.domain.Doctor;
 import ba.unsa.etf.rpr.domain.Examination;
 
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.util.TreeMap;
 
 public class ExaminationDao extends MainDao<Examination> {
 
-    public ExaminationDao() throws SQLException {
+    public ExaminationDao() {
         super("examination");
     }
 
@@ -35,7 +34,7 @@ public class ExaminationDao extends MainDao<Examination> {
 
     @Override
     public Map<String, Object> convertObject(Examination object) {
-        Map<String, Object> row = new TreeMap<String, Object>();
+        Map<String, Object> row = new TreeMap<>();
         row.put("IDE",object.getId());
         row.put("Date",object.getDate());
         row.put("IDP",object.getPatient());

@@ -3,14 +3,13 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
 
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class DoctorDao extends MainDao<Doctor> {
-    public DoctorDao() throws SQLException {
+    public DoctorDao() {
         super("doctor");
     }
 
@@ -32,7 +31,7 @@ public class DoctorDao extends MainDao<Doctor> {
 
     @Override
     public Map<String, Object> convertObject(Doctor object) {
-        Map<String, Object> row = new TreeMap<String, Object>();
+        Map<String, Object> row = new TreeMap<>();
         row.put("IDD",object.getId());
         row.put("Name",object.getName());
         row.put("Surname",object.getSurname());

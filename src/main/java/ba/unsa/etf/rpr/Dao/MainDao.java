@@ -52,7 +52,7 @@ public abstract class MainDao<T extends Id> {
         try{
             PreparedStatement stmt = connection.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()){ // result set is iterator.
+            while (rs.next()) {
                 T object = convertRow(rs);
                 results.add(object);
             }
@@ -85,18 +85,17 @@ public abstract class MainDao<T extends Id> {
 
         try{
             PreparedStatement stmt = connection.prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
-            // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals("id")) continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
-            rs.next(); // we know that there is one key
-            item.setId(rs.getInt(1)); //set id to return it back */
+            rs.next();
+            item.setId(rs.getInt(1));
 
             return item;
         }catch (SQLException e){
@@ -118,7 +117,7 @@ public abstract class MainDao<T extends Id> {
             PreparedStatement stmt = connection.prepareStatement(builder.toString());
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals("id")) continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
@@ -137,7 +136,7 @@ public abstract class MainDao<T extends Id> {
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
-            if (entry.getKey().equals("id")) continue; //skip insertion of id due autoincrement
+            if (entry.getKey().equals("id")) continue;
             columns.append(entry.getKey());
             questions.append("?");
             if (row.size() != counter) {
@@ -154,7 +153,7 @@ public abstract class MainDao<T extends Id> {
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
-            if (entry.getKey().equals("id")) continue; //skip update of id due where clause
+            if (entry.getKey().equals("id")) continue;
             columns.append(entry.getKey()).append("= ?");
             if (row.size() != counter) {
                 columns.append(",");

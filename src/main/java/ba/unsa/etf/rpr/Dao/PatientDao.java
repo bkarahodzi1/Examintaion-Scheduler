@@ -11,8 +11,8 @@ import java.util.TreeMap;
 
 public class PatientDao extends MainDao<Patient>{
 
-    public PatientDao(String name) {
-        super(name);
+    public PatientDao() throws SQLException{
+        super("patient");
     }
 
     @Override

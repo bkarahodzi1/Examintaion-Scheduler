@@ -11,17 +11,37 @@ import java.util.TreeMap;
 
 public class ExaminationDao extends MainDao<Examination> {
 
-    public ExaminationDao(String name) {
-        super(name);
+    public ExaminationDao() throws SQLException {
+        super("examination");
     }
 
     @Override
     public Examination convertRow(ResultSet rs) throws HospitalException {
-        return null;
+        try{
+            Examination ex = new Examination();
+            ex.setId(rs.getInt("IDE"));
+            ex.setDate(rs.getDate("Date"));
+            PatientDao patientDao=new PatientDao();
+            ex.setPatient(patientDao.getById(rs.getInt("IDP")));
+            DoctorDao doctorDao=new DoctorDao();
+            ex.setDoctor(doctorDao.getById(rs.getInt("IDD")));
+            ex.setDiagnosis(rs.getString("Diagnosis"));
+            ex.setTreatment(rs.getString("Treatment"));
+            return ex;
+        } catch (SQLException e){
+            throw new HospitalException(e.getMessage(), e);
+        }
     }
 
     @Override
     public Map<String, Object> convertObject(Examination object) {
-        return null;
+        Map<String, Object> row = new TreeMap<String, Object>();
+        row.put("IDE",object.getId());
+        row.put("Date",object.getDate());
+        row.put("IDP",object.getPatient());
+        row.put("IDD",object.getDoctor());
+        row.put("Diagnosis",object.getDiagnosis());
+        row.put("Treatment",object.getTreatment());
+        return row;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Patient implements Id{
     private int id;
     private String name,surname,place,address,phone_num;
-    private Date brith_date;
+    private Date birth_date;
     private boolean health_insurance;
 
     public int getId() {
@@ -57,12 +57,12 @@ public class Patient implements Id{
         this.phone_num = phone_num;
     }
 
-    public Date getBrith_date() {
-        return brith_date;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public void setBrith_date(Date brith_date) {
-        this.brith_date = brith_date;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
     }
 
     public boolean isHealth_insurance() {
@@ -82,7 +82,7 @@ public class Patient implements Id{
                 ", place='" + place + '\'' +
                 ", address='" + address + '\'' +
                 ", phone_num='" + phone_num + '\'' +
-                ", brith_date=" + brith_date +
+                ", brith_date=" + birth_date +
                 ", health_insurance=" + health_insurance +
                 '}';
     }
@@ -97,6 +97,6 @@ public class Patient implements Id{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, place, address, phone_num, brith_date, health_insurance);
+        return Objects.hash(id, name, surname, place, address, phone_num, birth_date, health_insurance);
     }
 }

@@ -20,10 +20,8 @@ public class ExaminationDaoSQLImpl extends MainDao<Examination> implements Exami
             Examination ex = new Examination();
             ex.setId(rs.getInt("IDE"));
             ex.setDate(rs.getDate("Date"));
-            PatientDaoSQLImpl patientDaoSQLImpl =new PatientDaoSQLImpl();
-            ex.setPatient(patientDaoSQLImpl.getById(rs.getInt("IDP")));
-            DoctorDaoSQLImpl doctorDaoSQLImpl =new DoctorDaoSQLImpl();
-            ex.setDoctor(doctorDaoSQLImpl.getById(rs.getInt("IDD")));
+            ex.setPatient(DaoFactory.PatientDao().getById(rs.getInt("IDP")));
+            ex.setDoctor(DaoFactory.DoctorDao().getById(rs.getInt("IDD")));
             ex.setDiagnosis(rs.getString("Diagnosis"));
             ex.setTreatment(rs.getString("Treatment"));
             return ex;

@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class PatientDao extends MainDao<Patient>{
+public class PatientDaoSQLImpl extends MainDao<Patient>{
 
-    public PatientDao() {
+    public PatientDaoSQLImpl() {
         super("patient");
     }
 

@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class ExaminationDao extends MainDao<Examination> {
+public class ExaminationDaoSQLImpl extends MainDao<Examination> {
 
-    public ExaminationDao() {
+    public ExaminationDaoSQLImpl() {
         super("examination");
     }
 
@@ -20,8 +20,8 @@ public class ExaminationDao extends MainDao<Examination> {
             Examination ex = new Examination();
             ex.setId(rs.getInt("IDE"));
             ex.setDate(rs.getDate("Date"));
-            PatientDao patientDao=new PatientDao();
-            ex.setPatient(patientDao.getById(rs.getInt("IDP")));
+            PatientDaoSQLImpl patientDaoSQLImpl =new PatientDaoSQLImpl();
+            ex.setPatient(patientDaoSQLImpl.getById(rs.getInt("IDP")));
             DoctorDaoSQLImpl doctorDaoSQLImpl =new DoctorDaoSQLImpl();
             ex.setDoctor(doctorDaoSQLImpl.getById(rs.getInt("IDD")));
             ex.setDiagnosis(rs.getString("Diagnosis"));

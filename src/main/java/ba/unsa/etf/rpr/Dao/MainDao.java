@@ -6,7 +6,7 @@ import ba.unsa.etf.rpr.domain.Id;
 import java.sql.*;
 import java.util.*;
 
-public abstract class MainDao<T extends Id> {
+public abstract class MainDao<T extends Id> implements Dao<T>{
     private static Connection connection;
     private String tableName;
     static {

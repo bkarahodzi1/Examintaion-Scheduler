@@ -22,8 +22,8 @@ public class ExaminationDao extends MainDao<Examination> {
             ex.setDate(rs.getDate("Date"));
             PatientDao patientDao=new PatientDao();
             ex.setPatient(patientDao.getById(rs.getInt("IDP")));
-            DoctorDao doctorDao=new DoctorDao();
-            ex.setDoctor(doctorDao.getById(rs.getInt("IDD")));
+            DoctorDaoSQLImpl doctorDaoSQLImpl =new DoctorDaoSQLImpl();
+            ex.setDoctor(doctorDaoSQLImpl.getById(rs.getInt("IDD")));
             ex.setDiagnosis(rs.getString("Diagnosis"));
             ex.setTreatment(rs.getString("Treatment"));
             return ex;

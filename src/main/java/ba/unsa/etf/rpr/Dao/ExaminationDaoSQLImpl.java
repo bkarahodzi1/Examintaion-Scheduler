@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class ExaminationDaoSQLImpl extends MainDao<Examination> {
+public class ExaminationDaoSQLImpl extends MainDao<Examination> implements ExaminationDao{
 
     public ExaminationDaoSQLImpl() {
         super("examination");

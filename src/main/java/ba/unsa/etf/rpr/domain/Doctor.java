@@ -54,6 +54,21 @@ public class Doctor implements Id {
         this.specialization = specialization;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     @Override
     public String toString() {
         return "Doctor {" +
@@ -63,6 +78,8 @@ public class Doctor implements Id {
                 ", surname='" + surname + '\'' +
                 ", phone_num='" + phone_num + '\'' +
                 ", specialization='" + specialization + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -76,6 +93,7 @@ public class Doctor implements Id {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, seniority, name, surname, phone_num, specialization);
+        return Objects.hash(id, seniority, name, surname, phone_num, specialization, username, password);
     }
+
 }

@@ -60,7 +60,7 @@ public class Examination implements Id{
 
     @Override
     public String toString() {
-        return "Examination{" +
+        return "Examination {" +
                 "id=" + id +
                 ", date=" + date +
                 ", patient=" + patient +

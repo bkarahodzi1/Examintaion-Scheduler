@@ -18,12 +18,12 @@ public class ExaminationDaoSQLImpl extends MainDao<Examination> implements Exami
     public Examination convertRow(ResultSet rs) throws HospitalException {
         try{
             Examination ex = new Examination();
-            ex.setId(rs.getInt("IDE"));
-            ex.setDate(rs.getDate("Date"));
-            ex.setPatient(DaoFactory.PatientDao().getById(rs.getInt("IDP")));
-            ex.setDoctor(DaoFactory.DoctorDao().getById(rs.getInt("IDD")));
-            ex.setDiagnosis(rs.getString("Diagnosis"));
-            ex.setTreatment(rs.getString("Treatment"));
+            ex.setId(rs.getInt("id"));
+            ex.setDate(rs.getDate("date"));
+            ex.setPatient(DaoFactory.PatientDao().getById(rs.getInt("patient")));
+            ex.setDoctor(DaoFactory.DoctorDao().getById(rs.getInt("doctor")));
+            ex.setDiagnosis(rs.getString("diagnosis"));
+            ex.setTreatment(rs.getString("treatment"));
             return ex;
         } catch (SQLException e){
             throw new HospitalException(e.getMessage(), e);

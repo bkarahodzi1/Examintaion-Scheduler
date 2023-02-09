@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Doctor implements Id {
     private int id, seniority;
-    private String name, surname, phone_num, specialization;
+    private String name, surname, phone_num, specialization, username, password;
 
     public int getId() {
         return id;

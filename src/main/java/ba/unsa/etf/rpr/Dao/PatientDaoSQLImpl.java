@@ -26,8 +26,6 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
             pat.setPhone_num(rs.getString("phone_num"));
             pat.setBirth_date(rs.getDate("birth_date"));
             pat.setHealth_insurance(rs.getBoolean("health_insurance"));
-            pat.setUsername(rs.getString("username"));
-            pat.setPassword(rs.getString("password"));
             return pat;
         } catch (SQLException e){
             throw new HospitalException(e.getMessage(), e);
@@ -45,8 +43,6 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
         row.put("phone_num",object.getPhone_num());
         row.put("birth_date",object.getBirth_date());
         row.put("health_insurance",object.isHealth_insurance());
-        row.put("username",object.getUsername());
-        row.put("password",object.getPassword());
         return row;
     }
 }

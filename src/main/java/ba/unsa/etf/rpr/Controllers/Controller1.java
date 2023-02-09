@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
+import ba.unsa.etf.rpr.domain.Patient;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -17,14 +18,6 @@ public class Controller1 {
     public TextField UsernameId;
 
     public void LogInProcess(ActionEvent actionEvent) {
-        try {
-            List lista = DaoFactory.PatientDao().getAll();
-            if(lista.size()==0){
-
-                return;
-            }
-        } catch (HospitalException e) {
-            throw new RuntimeException(e);
-        }
+        UsernameId.setStyle("-fx-border-color: #E92929");
     }
 }

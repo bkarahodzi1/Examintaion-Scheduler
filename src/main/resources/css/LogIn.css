@@ -1,3 +1,7 @@
 #LoginId {
     -fx-background-color: #327AFF;
 }
+-PoljeNeispravno{
+    -fx-border-color: #E92929;
+}
+

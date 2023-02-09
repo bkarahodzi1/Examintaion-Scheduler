@@ -19,7 +19,7 @@ public class App extends Application
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LogIn.fxml"));
         primaryStage.setTitle("Hospital");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         /*primaryStage.getIcons().add(new Image(""));*/
         primaryStage.show();
     }

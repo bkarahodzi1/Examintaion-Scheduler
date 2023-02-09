@@ -17,12 +17,12 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
     public Doctor convertRow(ResultSet rs) throws HospitalException {
         try{
             Doctor doc = new Doctor();
-            doc.setId(rs.getInt("IDD"));
-            doc.setName(rs.getString("Name"));
-            doc.setSurname(rs.getString("Surname"));
-            doc.setPhone_num(rs.getString("Phone"));
-            doc.setSeniority(rs.getInt("Seniority"));
-            doc.setSpecialization(rs.getString("Specialization"));
+            doc.setId(rs.getInt("id"));
+            doc.setName(rs.getString("name"));
+            doc.setSurname(rs.getString("surname"));
+            doc.setPhone_num(rs.getString("phone"));
+            doc.setSeniority(rs.getInt("seniority"));
+            doc.setSpecialization(rs.getString("specialization"));
             return doc;
         } catch (SQLException e){
             throw new HospitalException(e.getMessage(), e);
@@ -32,12 +32,12 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
     @Override
     public Map<String, Object> convertObject(Doctor object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("IDD",object.getId());
-        row.put("Name",object.getName());
-        row.put("Surname",object.getSurname());
-        row.put("Phone",object.getPhone_num());
-        row.put("Seniority",object.getSeniority());
-        row.put("Specialization",object.getSpecialization());
+        row.put("id",object.getId());
+        row.put("name",object.getName());
+        row.put("surname",object.getSurname());
+        row.put("phone",object.getPhone_num());
+        row.put("seniority",object.getSeniority());
+        row.put("specialization",object.getSpecialization());
         return row;
     }
 }

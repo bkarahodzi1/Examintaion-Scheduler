@@ -18,14 +18,14 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
     public Patient convertRow(ResultSet rs) throws HospitalException {
         try{
             Patient pat = new Patient();
-            pat.setId(rs.getInt("IDP"));
-            pat.setName(rs.getString("Name"));
-            pat.setSurname(rs.getString("Surname"));
-            pat.setAddress(rs.getString("Address"));
-            pat.setPlace(rs.getString("Place"));
-            pat.setPhone_num(rs.getString("Phone"));
-            pat.setBirth_date(rs.getDate("Birth date"));
-            pat.setHealth_insurance(rs.getBoolean("Health insurance"));
+            pat.setId(rs.getInt("id"));
+            pat.setName(rs.getString("name"));
+            pat.setSurname(rs.getString("surname"));
+            pat.setAddress(rs.getString("address"));
+            pat.setPlace(rs.getString("place"));
+            pat.setPhone_num(rs.getString("phone_num"));
+            pat.setBirth_date(rs.getDate("birth_date"));
+            pat.setHealth_insurance(rs.getBoolean("health_insurance"));
             return pat;
         } catch (SQLException e){
             throw new HospitalException(e.getMessage(), e);
@@ -35,14 +35,14 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
     @Override
     public Map<String, Object> convertObject(Patient object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("IDP",object.getId());
-        row.put("Name",object.getName());
-        row.put("Surname",object.getSurname());
-        row.put("Address",object.getAddress());
-        row.put("Place",object.getPlace());
-        row.put("Phone",object.getPhone_num());
-        row.put("Birth Date",object.getBirth_date());
-        row.put("Health insurance",object.isHealth_insurance());
+        row.put("id",object.getId());
+        row.put("name",object.getName());
+        row.put("surname",object.getSurname());
+        row.put("address",object.getAddress());
+        row.put("place",object.getPlace());
+        row.put("phone_num",object.getPhone_num());
+        row.put("birth_date",object.getBirth_date());
+        row.put("health_insurance",object.isHealth_insurance());
         return row;
     }
 }

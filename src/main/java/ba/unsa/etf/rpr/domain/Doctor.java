@@ -56,7 +56,7 @@ public class Doctor implements Id {
 
     @Override
     public String toString() {
-        return "Doctor{" +
+        return "Doctor {" +
                 "id=" + id +
                 ", seniority=" + seniority +
                 ", name='" + name + '\'' +

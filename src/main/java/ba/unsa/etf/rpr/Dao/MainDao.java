@@ -63,6 +63,16 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
         }
     }
 
+    public void deleteAll() throws HospitalException {
+        String sql = "DELETE FROM "+tableName;
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new HospitalException(e.getMessage(), e);
+        }
+    }
+
     public void delete(int id) throws HospitalException {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
         try{

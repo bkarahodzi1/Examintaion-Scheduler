@@ -18,5 +18,7 @@ public interface Dao<T> {
     void delete(int id) throws HospitalException;
 
 
+    void deleteAll() throws HospitalException;
+
     List<T> getAll() throws HospitalException;
 }

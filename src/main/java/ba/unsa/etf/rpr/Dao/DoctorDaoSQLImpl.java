@@ -20,7 +20,7 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
             doc.setId(rs.getInt("id"));
             doc.setName(rs.getString("name"));
             doc.setSurname(rs.getString("surname"));
-            doc.setPhone_num(rs.getString("phone"));
+            doc.setPhone_num(rs.getString("phone_num"));
             doc.setSeniority(rs.getInt("seniority"));
             doc.setSpecialization(rs.getString("specialization"));
             doc.setUsername(rs.getString("username"));
@@ -37,7 +37,7 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
         row.put("id",object.getId());
         row.put("name",object.getName());
         row.put("surname",object.getSurname());
-        row.put("phone",object.getPhone_num());
+        row.put("phone_num",object.getPhone_num());
         row.put("seniority",object.getSeniority());
         row.put("specialization",object.getSpecialization());
         row.put("username",object.getUsername());

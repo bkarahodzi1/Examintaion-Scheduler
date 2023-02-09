@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Patient implements Id{
     private int id;
-    private String name,surname,place,address,phone_num, username, password;
+    private String name,surname,place,address,phone_num;
     private Date birth_date;
     private boolean health_insurance;
 
@@ -73,21 +73,6 @@ public class Patient implements Id{
         this.health_insurance = health_insurance;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     @Override
     public String toString() {
         return "Patient {" +
@@ -99,8 +84,6 @@ public class Patient implements Id{
                 ", phone_num='" + phone_num + '\'' +
                 ", brith_date=" + birth_date +
                 ", health_insurance=" + health_insurance +
-                ", username=" + username +
-                ", password=" + password +
                 '}';
     }
 
@@ -114,7 +97,7 @@ public class Patient implements Id{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, place, address, phone_num, birth_date, health_insurance,username, password);
+        return Objects.hash(id, name, surname, place, address, phone_num, birth_date, health_insurance);
     }
 
 

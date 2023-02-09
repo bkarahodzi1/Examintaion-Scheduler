@@ -23,6 +23,8 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
             doc.setPhone_num(rs.getString("phone"));
             doc.setSeniority(rs.getInt("seniority"));
             doc.setSpecialization(rs.getString("specialization"));
+            doc.setUsername(rs.getString("username"));
+            doc.setPassword(rs.getString("password"));
             return doc;
         } catch (SQLException e){
             throw new HospitalException(e.getMessage(), e);
@@ -38,6 +40,8 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
         row.put("phone",object.getPhone_num());
         row.put("seniority",object.getSeniority());
         row.put("specialization",object.getSpecialization());
+        row.put("username",object.getUsername());
+        row.put("password",object.getPassword());
         return row;
     }
 }

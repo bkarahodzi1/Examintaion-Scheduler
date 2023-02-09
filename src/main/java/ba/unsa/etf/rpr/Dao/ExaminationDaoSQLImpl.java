@@ -33,12 +33,12 @@ public class ExaminationDaoSQLImpl extends MainDao<Examination> implements Exami
     @Override
     public Map<String, Object> convertObject(Examination object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("IDE",object.getId());
-        row.put("Date",object.getDate());
-        row.put("IDP",object.getPatient());
-        row.put("IDD",object.getDoctor());
-        row.put("Diagnosis",object.getDiagnosis());
-        row.put("Treatment",object.getTreatment());
+        row.put("id",object.getId());
+        row.put("date",object.getDate());
+        row.put("patient",object.getPatient());
+        row.put("doctor",object.getDoctor());
+        row.put("diagnosis",object.getDiagnosis());
+        row.put("treatment",object.getTreatment());
         return row;
     }
 }

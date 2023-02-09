@@ -32,6 +32,7 @@ public class Controller1 {
                 WindowId.getRowConstraints().set(2, con);
                 return;
             }
+
         } catch (HospitalException e) {
             throw new RuntimeException(e);
         }

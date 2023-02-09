@@ -46,6 +46,23 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
             throw new HospitalException(e.getMessage(), e);
         }
     }
+    public T getByUsername(String user) throws HospitalException {
+        String query = "SELECT * FROM "+this.tableName+" WHERE username = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, user);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                T result = convertRow(rs);
+                rs.close();
+                return result;
+            } else {
+                throw new HospitalException("Object not found");
+            }
+        } catch (SQLException e) {
+            throw new HospitalException(e.getMessage(), e);
+        }
+    }
     public List<T> getAll() throws HospitalException {
         String query = "SELECT * FROM "+ tableName;
         List<T> results = new ArrayList<T>();

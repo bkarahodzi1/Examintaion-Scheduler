@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws HospitalException {
-        DaoFactory.PatientDao().deleteAll();
+        List lista = DaoFactory.PatientDao().getAll();
+        System.out.println(lista.size());
     }
 }

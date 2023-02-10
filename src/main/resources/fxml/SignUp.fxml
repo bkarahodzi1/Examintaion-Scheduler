@@ -81,7 +81,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <Spinner prefHeight="25.0" prefWidth="590.0">
+            <Spinner fx:id="SeniorityId" prefHeight="25.0" prefWidth="590.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

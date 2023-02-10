@@ -42,7 +42,6 @@ public class Controller1 {
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);
                 PasswordError.setPrefHeight(0);
-
                 return;
             }
             UsernameId.setStyle("-fx-border-color: #00000000");
@@ -58,6 +57,8 @@ public class Controller1 {
             ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
             return;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

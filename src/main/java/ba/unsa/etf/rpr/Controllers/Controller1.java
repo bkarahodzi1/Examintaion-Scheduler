@@ -6,6 +6,8 @@ import ba.unsa.etf.rpr.domain.Doctor;
 import ba.unsa.etf.rpr.domain.Patient;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -57,8 +59,13 @@ public class Controller1 {
             ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
             return;
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        }
+    }
+
+    public void KeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            System.out.println("radi");
         }
     }
 }

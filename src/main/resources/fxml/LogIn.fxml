@@ -23,10 +23,10 @@
   <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="31.0" minHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="0.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <TextField fx:id="UsernameId" onKeyPressed="#KeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">

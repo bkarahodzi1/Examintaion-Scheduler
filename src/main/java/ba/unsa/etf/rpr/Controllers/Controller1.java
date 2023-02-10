@@ -25,6 +25,24 @@ public class Controller1 {
     public Label PasswordError;
 
     public void LogInProcess(ActionEvent actionEvent) {
+        login();
+    }
+
+
+    public void KeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            PasswordId.requestFocus();
+        }
+    }
+
+    public void KeyPressed2(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            login();
+        }
+    }
+    private void login() {
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
@@ -59,13 +77,6 @@ public class Controller1 {
             ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
             return;
-        }
-    }
-
-    public void KeyPressed(KeyEvent keyEvent) {
-        if(keyEvent.getCode().equals(KeyCode.ENTER))
-        {
-            System.out.println("radi");
         }
     }
 }

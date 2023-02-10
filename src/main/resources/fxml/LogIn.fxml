@@ -53,7 +53,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="LoginId" mnemonicParsing="false" onAction="#LogInProcess" onKeyPressed="#KeyPressed" text="Log in" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+      <Button fx:id="LoginId" mnemonicParsing="false" onAction="#LogInProcess" text="Log in" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>

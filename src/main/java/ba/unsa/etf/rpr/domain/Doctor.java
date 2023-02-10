@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Doctor implements Id {
     private int id, seniority;
-    private String name, surname, phone_num, specialization, username, password;
+    private String name, specialization, username, password;
 
     public int getId() {
         return id;
@@ -28,22 +28,6 @@ public class Doctor implements Id {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPhone_num() {
-        return phone_num;
-    }
-
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
     }
 
     public String getSpecialization() {
@@ -75,8 +59,6 @@ public class Doctor implements Id {
                 "id=" + id +
                 ", seniority=" + seniority +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phone_num='" + phone_num + '\'' +
                 ", specialization='" + specialization + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -93,7 +75,7 @@ public class Doctor implements Id {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, seniority, name, surname, phone_num, specialization, username, password);
+        return Objects.hash(id, seniority, name, specialization, username, password);
     }
 
 }

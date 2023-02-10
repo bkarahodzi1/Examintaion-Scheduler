@@ -15,7 +15,6 @@ public class Main {
         d1.setSpecialization("svasdf");
         d1.setSeniority(5);
         d1.setId(0);
-        d1.setSurname("asdfasdf");
         d1.setUsername("Berin");
         d1.setPassword("asdfasdfas");
         DaoFactory.DoctorDao().add(d1);

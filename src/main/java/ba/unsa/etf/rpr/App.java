@@ -20,7 +20,7 @@ public class App extends Application
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LogIn.fxml"));
         primaryStage.setTitle("Hospital log in");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         primaryStage.show();
     }

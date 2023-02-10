@@ -5,12 +5,18 @@ import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
 import ba.unsa.etf.rpr.domain.Patient;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -78,5 +84,15 @@ public class Controller1 {
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
             return;
         }
+    }
+
+    public void UrlClicked(ActionEvent actionEvent) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
+        primaryStage.setTitle("Hospital log in");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
+        primaryStage.show();
     }
 }

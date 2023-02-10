@@ -26,30 +26,31 @@ public class Controller1 {
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
-                RowConstraints con = new RowConstraints();
                 UsernameId.setStyle("-fx-border-color: #E92929");
+                PasswordId.setStyle("-fx-border-color: #00000000");
+                PasswordError.setPrefHeight(0);
                 ErrorId.setText("Invalid username!");
                 ErrorId.setStyle("-fx-text-fill: #E92929");
                 ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
                 ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
-                con.setPrefHeight(USE_COMPUTED_SIZE);
-                WindowId.getRowConstraints().set(2, con);
                 return;
             }
             Doctor doc = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
             if(doc.getPassword().equals(PasswordId.getText())){
 
             }
-
+            UsernameId.setStyle("-fx-border-color: #00000000");
+            PasswordId.setStyle("-fx-border-color: #E92929");
+            ErrorId.setPrefHeight(0);
+            PasswordError.setPrefHeight(USE_COMPUTED_SIZE);
         } catch (HospitalException e) {
-            RowConstraints con = new RowConstraints();
             UsernameId.setStyle("-fx-border-color: #E92929");
+            PasswordId.setStyle("-fx-border-color: #00000000");
+            PasswordError.setPrefHeight(0);
             ErrorId.setText("Username not found!");
             ErrorId.setStyle("-fx-text-fill: #E92929");
             ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
-            con.setPrefHeight(USE_COMPUTED_SIZE);
-            WindowId.getRowConstraints().set(2, con);
             return;
         }
     }

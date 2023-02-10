@@ -19,7 +19,5 @@ public class Main {
         d1.setUsername("Berin");
         d1.setPassword("asdfasdfas");
         DaoFactory.DoctorDao().add(d1);
-        Doctor d = DaoFactory.DoctorDao().getByUsername("Berin");
-        System.out.println(d.toString());
     }
 }

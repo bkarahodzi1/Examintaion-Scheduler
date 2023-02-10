@@ -19,32 +19,35 @@ public class Controller1 {
     public PasswordField PasswordId;
     public TextField UsernameId;
     public GridPane WindowId;
+    public Label ErrorId;
+    public Label PasswordError;
 
     public void LogInProcess(ActionEvent actionEvent) {
-        Label lab = new Label();
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
                 RowConstraints con = new RowConstraints();
                 UsernameId.setStyle("-fx-border-color: #E92929");
-                lab.setText("Invalid username!");
-                lab.setStyle("-fx-text-fill: #E92929");
-                WindowId.add(lab, 1, 2);
+                ErrorId.setText("Invalid username!");
+                ErrorId.setStyle("-fx-text-fill: #E92929");
+                ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
+                ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
                 con.setPrefHeight(USE_COMPUTED_SIZE);
                 WindowId.getRowConstraints().set(2, con);
                 return;
             }
-        } catch (HospitalException e) {
-            throw new RuntimeException(e);
-        }
-        try{
             Doctor doc = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
+            if(doc.getPassword().equals(PasswordId.getText())){
+
+            }
+
         } catch (HospitalException e) {
             RowConstraints con = new RowConstraints();
             UsernameId.setStyle("-fx-border-color: #E92929");
-            lab.setText("Username doesn't exist!");
-            lab.setStyle("-fx-text-fill: #E92929");
-            WindowId.add(lab, 1, 2);
+            ErrorId.setText("Username not found!");
+            ErrorId.setStyle("-fx-text-fill: #E92929");
+            ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
+            ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
             con.setPrefHeight(USE_COMPUTED_SIZE);
             WindowId.getRowConstraints().set(2, con);
             return;

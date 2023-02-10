@@ -37,7 +37,12 @@ public class Controller1 {
             }
             Doctor doc = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
             if(doc.getPassword().equals(PasswordId.getText())){
-
+                System.out.println("OK");
+                UsernameId.setStyle("-fx-border-color: #90EE90");
+                PasswordId.setStyle("-fx-border-color: #90EE90");
+                ErrorId.setPrefHeight(0);
+                PasswordError.setPrefHeight(0);
+                return;
             }
             UsernameId.setStyle("-fx-border-color: #00000000");
             PasswordId.setStyle("-fx-border-color: #E92929");

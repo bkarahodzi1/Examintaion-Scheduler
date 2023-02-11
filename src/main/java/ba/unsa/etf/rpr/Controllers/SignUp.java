@@ -67,9 +67,15 @@ public class SignUp implements Initializable {
                     label4.setPadding(new Insets(0,0,0,10));
                 }
                 else {
-                    PasswordId.setStyle("-fx-background-color: #FFFFFF");
+                    PasswordId.setStyle("-fx-border-color: #00FF00");
                     label4.setPrefHeight(0);
                 }
+            }
+        });
+        RepeatId.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+
             }
         });
     }

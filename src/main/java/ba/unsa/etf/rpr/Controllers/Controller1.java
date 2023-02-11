@@ -15,7 +15,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -48,7 +47,7 @@ public class Controller1 {
     }
     private void login() throws IOException{
         try{
-            List<Doctor> lista = DaoFactory.DoctorDao().getAll();
+            DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
                 UsernameId.setStyle("-fx-border-color: #E92929");
                 PasswordId.setStyle("-fx-border-color: #00000000");

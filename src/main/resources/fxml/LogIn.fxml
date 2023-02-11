@@ -19,20 +19,22 @@
         <URL value="@/css/LogIn.css" />
     </stylesheets>
   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="208.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="208.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="UsernameId" onKeyPressed="#KeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextField fx:id="UsernameId" onKeyPressed="#KeyPressed" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -40,7 +42,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Label text="Username:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label text="Username:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -48,7 +50,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label text="Password:" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label text="Password:" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -56,7 +58,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <PasswordField fx:id="PasswordId" onKeyPressed="#KeyPressed2" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <PasswordField fx:id="PasswordId" onKeyPressed="#KeyPressed2" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -75,7 +77,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
-      <Button fx:id="LoginId" mnemonicParsing="false" onAction="#LogInProcess" text="Log in" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+      <Button fx:id="LoginId" mnemonicParsing="false" onAction="#LogInProcess" text="Log in" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -83,7 +85,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Hyperlink fx:id="CreateAccId" onAction="#UrlClicked" style="-fx-text-fill: #327AFF;" text="Create account" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+      <Hyperlink fx:id="CreateAccId" onAction="#UrlClicked" style="-fx-text-fill: #327AFF;" text="Create account" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets bottom="10.0" left="7.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -91,7 +93,7 @@
             <Font size="18.0" />
          </font>
       </Hyperlink>
-      <Label fx:id="ErrorId" ellipsisString="" minHeight="0.0" prefHeight="0.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Label fx:id="ErrorId" ellipsisString="" minHeight="0.0" prefHeight="0.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </GridPane.margin>
@@ -99,11 +101,11 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="PasswordError" minHeight="0.0" minWidth="10.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Incorrect password!" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Label fx:id="PasswordError" minHeight="0.0" minWidth="10.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Incorrect password!" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ImageView fitHeight="186.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER">
+      <ImageView fitHeight="175.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
          <image>
             <Image url="@../Images/v987-18a.jpg" />
          </image>

@@ -34,6 +34,9 @@ public class SignUp implements Initializable {
     }
 
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
+        if(NameId.getText().trim().isEmpty()){
+
+        }
         Doctor d1 = new Doctor();
         d1.setName(NameId.getText());
         d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem().toString());

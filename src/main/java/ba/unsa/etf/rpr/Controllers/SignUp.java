@@ -56,8 +56,8 @@ public class SignUp implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if(PasswordId.getText().length()<=5 || PasswordId.getText().matches("[a-zA-Z]+")){
-                    PasswordId.setStyle("-fx-background-color: light pink");
-                    label4.setText("Password has to be at least 5 characters long and must contain at least one letter and one number");
+                    PasswordId.setStyle("-fx-background-color: #FFB6C1");
+                    label4.setText("Password has to contain at least 5 characters,\n at least one letter and one number\n");
                     label4.setPrefHeight(USE_COMPUTED_SIZE);
                 }
                 else {

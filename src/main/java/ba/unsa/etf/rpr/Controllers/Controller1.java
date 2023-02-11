@@ -70,7 +70,7 @@ public class Controller1 {
                 Stage closing = (Stage) LoginId.getScene().getWindow();
                 Stage primaryStage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
-                primaryStage.setTitle("Hospital sign up");
+                primaryStage.setTitle("Hospital");
                 primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 primaryStage.setResizable(true);
                 primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));

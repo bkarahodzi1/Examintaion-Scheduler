@@ -5,12 +5,17 @@ import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -43,7 +48,7 @@ public class SignUp implements Initializable {
         SeniorityId.setEditable(true);
     }
 
-    public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
+    public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException {
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);
@@ -90,6 +95,14 @@ public class SignUp implements Initializable {
         d1.setSeniority(SeniorityId.getValue());
         d1.setUsername(UsernameId.getText());
         d1.setPassword(PasswordId.getText());
-        DaoFactory.DoctorDao().add(d1);
+        DaoFactory.DoctorDao().add(d1);Stage closing = (Stage) label1.getScene().getWindow();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+        primaryStage.setTitle("Hospital");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.setResizable(true);
+        primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
+        primaryStage.show();
+        closing.close();
     }
 }

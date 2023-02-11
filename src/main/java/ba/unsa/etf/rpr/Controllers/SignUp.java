@@ -44,7 +44,13 @@ public class SignUp implements Initializable {
         if(NameId.getText().trim().isEmpty()){
             label1.setPrefHeight(USE_COMPUTED_SIZE);
             if(SpecId.getSelectionModel().getSelectedItem().isEmpty()) {
-
+                label2.setPrefHeight(USE_COMPUTED_SIZE);
+                if(UsernameId.getText().isEmpty()) {
+                    label3.setPrefHeight(USE_COMPUTED_SIZE);
+                    if(PasswordId.getText().isEmpty()) {
+                        label2.setPrefHeight(USE_COMPUTED_SIZE);
+                    }
+                }
             }
         }
         Doctor d1 = new Doctor();

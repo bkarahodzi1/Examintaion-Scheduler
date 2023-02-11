@@ -109,15 +109,17 @@ public class SignUp implements Initializable {
         temporaryStage.setResizable(false);
         temporaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         temporaryStage.show();
-        PauseTransition delay = new PauseTransition(Duration.seconds(1));
-        delay.setOnFinished( event -> temporaryStage.close() );
-        delay.play();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
         primaryStage.setTitle("Hospital main page");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
-        primaryStage.show();
+        PauseTransition delay2 = new PauseTransition(Duration.seconds(3));
+        delay2.setOnFinished( event -> primaryStage.show() );
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished( event -> temporaryStage.close() );
+        delay.play();
+        delay2.play();
     }
 }

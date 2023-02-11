@@ -49,7 +49,7 @@ public class SignUp implements Initializable {
         SeniorityId.setEditable(true);
     }
 
-    public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException {
+    public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException, InterruptedException {
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);
@@ -98,9 +98,15 @@ public class SignUp implements Initializable {
         d1.setPassword(PasswordId.getText());
         DaoFactory.DoctorDao().add(d1);
         Popup popup = new Popup();
-        Label label = new Label("Account successfully made");
+        Label label = new Label("Account successfully made!");
+        label.setStyle("-fx-background-color: white;");
+        label.setMinWidth(80);
+        label.setMinHeight(50);
         popup.getContent().add(label);
-        Stage closing = (Stage) label1.getScene().getWindow();
+        popup.show(label1.getScene().getWindow());
+        Thread.sleep(500);
+        popup.hide();
+        /*Stage closing = (Stage) label1.getScene().getWindow();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
         primaryStage.setTitle("Hospital");
@@ -108,6 +114,6 @@ public class SignUp implements Initializable {
         primaryStage.setResizable(true);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         primaryStage.show();
-        closing.close();
+        closing.close();*/
     }
 }

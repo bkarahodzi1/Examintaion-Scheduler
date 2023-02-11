@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
@@ -134,5 +135,8 @@ public class SignUp implements Initializable {
         delay.setOnFinished( event -> temporaryStage.close() );
         delay.play();
         delay2.play();
+    }
+
+    public void KeyPressed(KeyEvent keyEvent) {
     }
 }

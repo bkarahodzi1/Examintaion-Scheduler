@@ -102,13 +102,6 @@ public class SignUp implements Initializable {
         DaoFactory.DoctorDao().add(d1);
         Stage closing = (Stage) label1.getScene().getWindow();
         closing.close();
-        final Popup popup = new Popup();
-        Label label = new Label("Account successfully made!");
-        label.setStyle(" -fx-background-color: white;");
-        popup.getContent().add(label);
-        label.setMinWidth(80);
-        label.setMinHeight(50);
-        popup.show(label1.getScene().getWindow());
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished( event -> popup.hide() );
         delay.play();

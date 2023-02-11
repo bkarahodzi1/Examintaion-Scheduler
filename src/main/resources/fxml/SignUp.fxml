@@ -20,11 +20,16 @@
   <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -55,7 +60,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </TextField>
-      <Label text="Seniority: " GridPane.rowIndex="2">
+      <Label text="Seniority: " GridPane.rowIndex="3">
          <font>
             <Font size="16.0" />
          </font>
@@ -63,12 +68,12 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Spinner fx:id="SeniorityId" prefWidth="590.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Spinner fx:id="SeniorityId" prefWidth="590.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Spinner>
-      <Label text="Specialization:" GridPane.rowIndex="3">
+      <Label text="Specialization:" GridPane.rowIndex="4">
          <font>
             <Font size="16.0" />
          </font>
@@ -76,12 +81,12 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <ChoiceBox fx:id="SpecId" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <ChoiceBox fx:id="SpecId" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </ChoiceBox>
-      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Username:" GridPane.rowIndex="4">
+      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Username:" GridPane.rowIndex="6">
          <font>
             <Font size="16.0" />
          </font>
@@ -89,7 +94,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="UsernameId" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="UsernameId" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="16.0" />
          </font>
@@ -97,7 +102,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </TextField>
-      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Password:" GridPane.rowIndex="5">
+      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Password:" GridPane.rowIndex="8">
          <font>
             <Font size="16.0" />
          </font>
@@ -105,7 +110,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="PasswordId" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <PasswordField fx:id="PasswordId" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="16.0" />
          </font>
@@ -113,7 +118,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </PasswordField>
-      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Repeat password:" GridPane.rowIndex="6">
+      <Label maxHeight="1.7976931348623157E308" prefHeight="35.0" text="Repeat password:" GridPane.rowIndex="10">
          <font>
             <Font size="16.0" />
          </font>
@@ -121,7 +126,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="RepeatId" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <PasswordField fx:id="RepeatId" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <font>
             <Font size="16.0" />
          </font>
@@ -129,7 +134,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </PasswordField>
-      <Button fx:id="CreateId" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#CreateClicked" prefHeight="35.0" style="-fx-background-color: #327AFF;" text="Create" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+      <Button fx:id="CreateId" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#CreateClicked" prefHeight="35.0" style="-fx-background-color: #327AFF;" text="Create" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
          <font>
             <Font size="16.0" />
          </font>
@@ -137,5 +142,60 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
+      <Label minHeight="0.0" minWidth="0.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Field empty!" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label layoutX="174.0" layoutY="116.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Field empty!" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label minHeight="0.0" minWidth="0.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Field empty!" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Label minHeight="0.0" minWidth="0.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Field empty!" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label minHeight="0.0" minWidth="0.0" prefHeight="0.0" style="-fx-text-fill: #E92929;" text="Passwords don't match!" GridPane.columnIndex="1" GridPane.rowIndex="11">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
    </children>
 </GridPane>

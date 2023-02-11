@@ -48,7 +48,10 @@ public class SignUp implements Initializable {
                 if(UsernameId.getText().isEmpty()) {
                     label3.setPrefHeight(USE_COMPUTED_SIZE);
                     if(PasswordId.getText().isEmpty()) {
-                        label2.setPrefHeight(USE_COMPUTED_SIZE);
+                        label4.setPrefHeight(USE_COMPUTED_SIZE);
+                        if(RepeatId.getText().isEmpty()) {
+                            label5.setPrefHeight(USE_COMPUTED_SIZE);
+                        }
                     }
                 }
             }

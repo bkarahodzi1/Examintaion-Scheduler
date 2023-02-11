@@ -1,5 +1,9 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Exceptions.HospitalException;
+import ba.unsa.etf.rpr.domain.Doctor;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,8 +15,8 @@ import java.util.ResourceBundle;
 
 public class SignUp implements Initializable {
 
-    public ChoiceBox SpecId;
-    public Spinner SeniorityId;
+    public ChoiceBox<String> SpecId;
+    public Spinner<Integer> SeniorityId;
     public TextField NameId;
     public TextField UsernameId;
     public PasswordField PasswordId;
@@ -27,5 +31,15 @@ public class SignUp implements Initializable {
         SpinnerValueFactory<Integer> spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0);
         this.SeniorityId.setValueFactory(spin);
         SeniorityId.setEditable(true);
+    }
+
+    public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
+        Doctor d1 = new Doctor();
+        d1.setName(NameId.getText());
+        d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem().toString());
+        d1.setSeniority(SeniorityId.getValue());
+        d1.setUsername(UsernameId.getText());
+        d1.setPassword(PasswordId.getText());
+        DaoFactory.DoctorDao().add(d1);
     }
 }

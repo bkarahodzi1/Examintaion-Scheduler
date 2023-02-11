@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.Dao;
 
-import ba.unsa.etf.rpr.domain.Doctor;
+import ba.unsa.etf.rpr.Domain.Doctor;
 
 public interface DoctorDao extends Dao<Doctor> {
 

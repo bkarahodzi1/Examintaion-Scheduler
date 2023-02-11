@@ -2,11 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
-import ba.unsa.etf.rpr.domain.Doctor;
-import ba.unsa.etf.rpr.domain.Patient;
-
-import java.util.Date;
-import java.util.List;
+import ba.unsa.etf.rpr.Domain.Doctor;
 
 public class Main {
     public static void main(String[] args) throws HospitalException {

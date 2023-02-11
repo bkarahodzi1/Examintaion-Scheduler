@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.Dao;
 
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
-import ba.unsa.etf.rpr.domain.Id;
+import ba.unsa.etf.rpr.Domain.Id;
 
 import java.sql.*;
 import java.util.*;

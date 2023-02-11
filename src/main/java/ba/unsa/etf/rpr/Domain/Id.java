@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.domain;
+package ba.unsa.etf.rpr.Domain;
 
 public interface Id {
     void setId(int id);

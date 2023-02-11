@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+
 public class SignUp implements Initializable {
 
     public ChoiceBox<String> SpecId;
@@ -22,6 +24,11 @@ public class SignUp implements Initializable {
     public PasswordField PasswordId;
     public PasswordField RepeatId;
     public Button CreateId;
+    public Label label1;
+    public Label label2;
+    public Label label3;
+    public Label label4;
+    public Label label5;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,11 +42,14 @@ public class SignUp implements Initializable {
 
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
         if(NameId.getText().trim().isEmpty()){
+            label1.setPrefHeight(USE_COMPUTED_SIZE);
+            if(SpecId.getSelectionModel().getSelectedItem().isEmpty()) {
 
+            }
         }
         Doctor d1 = new Doctor();
         d1.setName(NameId.getText());
-        d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem().toString());
+        d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem());
         d1.setSeniority(SeniorityId.getValue());
         d1.setUsername(UsernameId.getText());
         d1.setPassword(PasswordId.getText());

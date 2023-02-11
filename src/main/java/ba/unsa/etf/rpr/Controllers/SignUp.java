@@ -7,7 +7,6 @@ import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -20,11 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -74,7 +70,7 @@ public class SignUp implements Initializable {
         });
     }
 
-    public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException, InterruptedException {
+    public void CreateClicked(ActionEvent ignoredActionEvent) throws HospitalException, IOException {
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);

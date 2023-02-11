@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.Controllers;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
-import ba.unsa.etf.rpr.domain.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,7 +28,7 @@ public class Controller1 {
     public Label ErrorId;
     public Label PasswordError;
 
-    public void LogInProcess(ActionEvent actionEvent) throws IOException, InterruptedException {
+    public void LogInProcess(ActionEvent ignoredActionEvent) throws IOException {
         login();
     }
 
@@ -42,13 +40,13 @@ public class Controller1 {
         }
     }
 
-    public void KeyPressed2(KeyEvent keyEvent) throws IOException, InterruptedException {
+    public void KeyPressed2(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
             login();
         }
     }
-    private void login() throws IOException, InterruptedException {
+    private void login() throws IOException{
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -67,6 +68,10 @@ public class SignUp implements Initializable {
     }
 
     public void CreateClicked(ActionEvent ignoredActionEvent) throws HospitalException, IOException {
+        SignUp();
+    }
+
+    private void SignUp() throws HospitalException, IOException {
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);
@@ -137,6 +142,9 @@ public class SignUp implements Initializable {
         delay2.play();
     }
 
-    public void KeyPressed(KeyEvent keyEvent) {
+    public void KeyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
+        if(keyEvent.getCode().equals(KeyCode.ENTER)){
+            SignUp();
+        }
     }
 }

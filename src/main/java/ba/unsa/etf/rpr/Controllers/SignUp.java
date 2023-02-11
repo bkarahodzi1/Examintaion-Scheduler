@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.Controllers;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -99,13 +101,23 @@ public class SignUp implements Initializable {
         d1.setPassword(PasswordId.getText());
         DaoFactory.DoctorDao().add(d1);
         Stage closing = (Stage) label1.getScene().getWindow();
+        closing.close();
+        final Popup popup = new Popup();
+        Label label = new Label("Account successfully made!");
+        label.setStyle(" -fx-background-color: white;");
+        popup.getContent().add(label);
+        label.setMinWidth(80);
+        label.setMinHeight(50);
+        popup.show(label1.getScene().getWindow());
+        PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        delay.setOnFinished( event -> popup.hide() );
+        delay.play();
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/PopUp.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
         primaryStage.setTitle("Great success");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         primaryStage.show();
-        closing.close();
     }
 }

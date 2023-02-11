@@ -30,7 +30,7 @@ public class Controller1 {
     public Label ErrorId;
     public Label PasswordError;
 
-    public void LogInProcess(ActionEvent actionEvent) {
+    public void LogInProcess(ActionEvent actionEvent) throws IOException {
         login();
     }
 
@@ -42,13 +42,13 @@ public class Controller1 {
         }
     }
 
-    public void KeyPressed2(KeyEvent keyEvent) {
+    public void KeyPressed2(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
             login();
         }
     }
-    private void login() {
+    private void login() throws IOException {
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
@@ -68,7 +68,15 @@ public class Controller1 {
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);
                 PasswordError.setPrefHeight(0);
-
+                Stage closing = (Stage) LoginId.getScene().getWindow();
+                Stage primaryStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+                primaryStage.setTitle("Hospital sign up");
+                primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+                primaryStage.setResizable(false);
+                primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
+                primaryStage.show();
+                closing.close();
                 return;
             }
             UsernameId.setStyle("-fx-border-color: #00000000");

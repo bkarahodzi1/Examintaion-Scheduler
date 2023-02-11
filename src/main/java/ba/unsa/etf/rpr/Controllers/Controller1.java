@@ -88,7 +88,6 @@ public class Controller1 {
 
     public void UrlClicked(ActionEvent actionEvent) throws IOException {
         Stage closing = (Stage) LoginId.getScene().getWindow();
-        closing.close();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
         primaryStage.setTitle("Hospital log in");
@@ -96,5 +95,6 @@ public class Controller1 {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         primaryStage.show();
+        closing.close();
     }
 }

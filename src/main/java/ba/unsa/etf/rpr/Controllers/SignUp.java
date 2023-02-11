@@ -2,9 +2,7 @@ package ba.unsa.etf.rpr.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -15,6 +13,11 @@ public class SignUp implements Initializable {
 
     public ChoiceBox SpecId;
     public Spinner SeniorityId;
+    public TextField NameId;
+    public TextField UsernameId;
+    public PasswordField PasswordId;
+    public PasswordField RepeatId;
+    public Button CreateId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -119,7 +119,7 @@
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <Button fx:id="CreateId" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" style="-fx-background-color: #327AFF;" text="Create" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="CreateId" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#CreateClicked" style="-fx-background-color: #327AFF;" text="Create" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

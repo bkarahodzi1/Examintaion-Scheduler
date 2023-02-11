@@ -72,12 +72,6 @@ public class SignUp implements Initializable {
                 }
             }
         });
-        RepeatId.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-
-            }
-        });
     }
 
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException, InterruptedException {

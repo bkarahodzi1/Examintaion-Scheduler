@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -66,7 +67,7 @@ public class Controller1 {
                 PasswordError.setPrefHeight(0);
                 Stage closing = (Stage) LoginId.getScene().getWindow();
                 Stage primaryStage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
                 primaryStage.setTitle("Hospital");
                 primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 primaryStage.setResizable(true);
@@ -87,14 +88,13 @@ public class Controller1 {
             ErrorId.setStyle("-fx-text-fill: #E92929");
             ErrorId.setPrefHeight(USE_COMPUTED_SIZE);
             ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
-            return;
         }
     }
 
-    public void UrlClicked(ActionEvent actionEvent) throws IOException {
+    public void UrlClicked(ActionEvent ignoredActionEvent) throws IOException {
         Stage closing = (Stage) LoginId.getScene().getWindow();
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/SignUp.fxml")));
         primaryStage.setTitle("Hospital sign up");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);

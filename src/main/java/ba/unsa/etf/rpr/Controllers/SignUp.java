@@ -68,10 +68,10 @@ public class SignUp implements Initializable {
     }
 
     public void CreateClicked(ActionEvent ignoredActionEvent) throws HospitalException, IOException {
-        SignUp();
+        signUp();
     }
 
-    private void SignUp() throws HospitalException, IOException {
+    private void signUp() throws HospitalException, IOException {
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);
@@ -144,7 +144,7 @@ public class SignUp implements Initializable {
 
     public void KeyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            SignUp();
+            signUp();
         }
     }
 }

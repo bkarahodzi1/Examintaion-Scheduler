@@ -60,14 +60,14 @@ public class SignUp implements Initializable {
         PasswordId.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(PasswordId.getText().length()<=5){
+                if(PasswordId.getText().length()<=5 || !PasswordId.getText().matches(".*[a-zA-Z].*") || !PasswordId.getText().matches(".*[0-9].*")){
                     PasswordId.setStyle("-fx-background-color: #FFB6C1");
                     label4.setText("Password has to contain at least 5 characters,\n at least one letter and one number\n");
                     label4.setPrefHeight(USE_COMPUTED_SIZE);
                     label4.setPadding(new Insets(0,0,0,10));
                 }
                 else {
-                    PasswordId.setStyle("-fx-background-color: #00000000");
+                    PasswordId.setStyle("-fx-background-color: #FFFFFF");
                     label4.setPrefHeight(0);
                 }
             }

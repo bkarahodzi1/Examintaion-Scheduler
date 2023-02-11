@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -95,7 +96,11 @@ public class SignUp implements Initializable {
         d1.setSeniority(SeniorityId.getValue());
         d1.setUsername(UsernameId.getText());
         d1.setPassword(PasswordId.getText());
-        DaoFactory.DoctorDao().add(d1);Stage closing = (Stage) label1.getScene().getWindow();
+        DaoFactory.DoctorDao().add(d1);
+        Popup popup = new Popup();
+        Label label = new Label("Account successfully made");
+        popup.getContent().add(label);
+        Stage closing = (Stage) label1.getScene().getWindow();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
         primaryStage.setTitle("Hospital");

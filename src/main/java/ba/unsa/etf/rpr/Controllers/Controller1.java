@@ -30,7 +30,7 @@ public class Controller1 {
     public Label ErrorId;
     public Label PasswordError;
 
-    public void LogInProcess(ActionEvent actionEvent) throws IOException {
+    public void LogInProcess(ActionEvent actionEvent) throws IOException, InterruptedException {
         login();
     }
 
@@ -42,13 +42,13 @@ public class Controller1 {
         }
     }
 
-    public void KeyPressed2(KeyEvent keyEvent) throws IOException {
+    public void KeyPressed2(KeyEvent keyEvent) throws IOException, InterruptedException {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
             login();
         }
     }
-    private void login() throws IOException {
+    private void login() throws IOException, InterruptedException {
         try{
             List<Doctor> lista = DaoFactory.DoctorDao().getAll();
             if(UsernameId.getText().trim().isEmpty()) {
@@ -63,7 +63,6 @@ public class Controller1 {
             }
             Doctor doc = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
             if(doc.getPassword().equals(PasswordId.getText())){
-                System.out.println("OK");
                 UsernameId.setStyle("-fx-border-color: #00FF00 ");
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);

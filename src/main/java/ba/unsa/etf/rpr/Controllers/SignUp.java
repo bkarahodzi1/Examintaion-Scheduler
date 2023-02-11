@@ -43,19 +43,21 @@ public class SignUp implements Initializable {
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
         if(NameId.getText().trim().isEmpty()){
             label1.setPrefHeight(USE_COMPUTED_SIZE);
-            if(SpecId.getSelectionModel().getSelectedItem().isEmpty()) {
-                label2.setPrefHeight(USE_COMPUTED_SIZE);
-                if(UsernameId.getText().isEmpty()) {
-                    label3.setPrefHeight(USE_COMPUTED_SIZE);
-                    if(PasswordId.getText().isEmpty()) {
-                        label4.setPrefHeight(USE_COMPUTED_SIZE);
-                        if(RepeatId.getText().isEmpty()) {
-                            label5.setPrefHeight(USE_COMPUTED_SIZE);
-                        }
-                    }
-                }
-            }
+
         }
+        if(SpecId.getSelectionModel().getSelectedItem().isEmpty()) {
+            label2.setPrefHeight(USE_COMPUTED_SIZE);
+        }
+        if(UsernameId.getText().isEmpty()) {
+                    label3.setPrefHeight(USE_COMPUTED_SIZE);
+        }
+        if(PasswordId.getText().isEmpty()) {
+            label4.setPrefHeight(USE_COMPUTED_SIZE);
+        }
+        if(!RepeatId.getText().equals(PasswordId.getText())) {
+            label5.setPrefHeight(USE_COMPUTED_SIZE);
+        }
+        if(NameId.getText().trim().isEmpty() || SpecId.getSelectionModel().getSelectedItem().isEmpty() || UsernameId.getText().isEmpty() || PasswordId.getText().isEmpty() || !RepeatId.getText().equals(PasswordId.getText()))return;
         Doctor d1 = new Doctor();
         d1.setName(NameId.getText());
         d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem());

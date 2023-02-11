@@ -67,7 +67,16 @@ public class Controller1 {
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);
                 PasswordError.setPrefHeight(0);
-                goToHome();
+                Stage closing = (Stage) LoginId.getScene().getWindow();
+                Stage primaryStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+                primaryStage.setTitle("Hospital sign up");
+                primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+                primaryStage.setResizable(false);
+                primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
+                primaryStage.show();
+                closing.close();
+                return;
             }
             UsernameId.setStyle("-fx-border-color: #00000000");
             PasswordId.setStyle("-fx-border-color: #E92929");
@@ -84,18 +93,7 @@ public class Controller1 {
             return;
         }
     }
-    private void goToHome() throws IOException {
-        Stage closing = (Stage) LoginId.getScene().getWindow();
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
-        primaryStage.setTitle("Hospital sign up");
-        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
-        primaryStage.show();
-        closing.close();
-        return;
-    }
+
     public void UrlClicked(ActionEvent actionEvent) throws IOException {
         Stage closing = (Stage) LoginId.getScene().getWindow();
         Stage primaryStage = new Stage();

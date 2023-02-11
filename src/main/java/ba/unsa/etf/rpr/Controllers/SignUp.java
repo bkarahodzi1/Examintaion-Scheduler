@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.domain.Doctor;
 import javafx.animation.PauseTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +52,15 @@ public class SignUp implements Initializable {
         SpinnerValueFactory<Integer> spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0);
         this.SeniorityId.setValueFactory(spin);
         SeniorityId.setEditable(true);
+        PasswordId.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                if(PasswordId.getText().length()<=5 || PasswordId.getText().matches("[a-zA-Z]+")){
+                    PasswordId.setStyle("-fx-border-color: #E92929");
+                    label4.setText("Password has to be at least 5 characters long and must contain at least one letter and one number");
+                }
+            }
+        });
     }
 
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException, IOException, InterruptedException {

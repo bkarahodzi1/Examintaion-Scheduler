@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -29,6 +30,8 @@ public class SignUp implements Initializable {
     public Label label3;
     public Label label4;
     public Label label5;
+    public GridPane GridId;
+    public RowConstraints Row2;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,21 +46,24 @@ public class SignUp implements Initializable {
     public void CreateClicked(ActionEvent actionEvent) throws HospitalException {
         if(NameId.getText().trim().isEmpty()){
             label1.setPrefHeight(USE_COMPUTED_SIZE);
-
+            return;
         }
         if(SpecId.getSelectionModel().getSelectedItem().isEmpty()) {
             label2.setPrefHeight(USE_COMPUTED_SIZE);
+            return;
         }
         if(UsernameId.getText().isEmpty()) {
-                    label3.setPrefHeight(USE_COMPUTED_SIZE);
+            label3.setPrefHeight(USE_COMPUTED_SIZE);
+            return;
         }
         if(PasswordId.getText().isEmpty()) {
             label4.setPrefHeight(USE_COMPUTED_SIZE);
+            return;
         }
         if(!RepeatId.getText().equals(PasswordId.getText())) {
             label5.setPrefHeight(USE_COMPUTED_SIZE);
+            return;
         }
-        if(NameId.getText().trim().isEmpty() || SpecId.getSelectionModel().getSelectedItem().isEmpty() || UsernameId.getText().isEmpty() || PasswordId.getText().isEmpty() || !RepeatId.getText().equals(PasswordId.getText()))return;
         Doctor d1 = new Doctor();
         d1.setName(NameId.getText());
         d1.setSpecialization(SpecId.getSelectionModel().getSelectedItem());

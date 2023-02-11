@@ -10,9 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -20,6 +24,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -55,10 +60,11 @@ public class SignUp implements Initializable {
         PasswordId.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(PasswordId.getText().length()<=5 || PasswordId.getText().matches("[a-zA-Z]+")){
+                if(PasswordId.getText().length()<=5){
                     PasswordId.setStyle("-fx-background-color: #FFB6C1");
                     label4.setText("Password has to contain at least 5 characters,\n at least one letter and one number\n");
                     label4.setPrefHeight(USE_COMPUTED_SIZE);
+                    label4.setPadding(new Insets(0,0,0,10));
                 }
                 else {
                     PasswordId.setStyle("-fx-background-color: #00000000");

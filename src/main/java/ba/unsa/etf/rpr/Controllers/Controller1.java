@@ -68,6 +68,7 @@ public class Controller1 {
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);
                 PasswordError.setPrefHeight(0);
+
                 return;
             }
             UsernameId.setStyle("-fx-border-color: #00000000");
@@ -90,7 +91,7 @@ public class Controller1 {
         Stage closing = (Stage) LoginId.getScene().getWindow();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SignUp.fxml"));
-        primaryStage.setTitle("Hospital log in");
+        primaryStage.setTitle("Hospital sign up");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));

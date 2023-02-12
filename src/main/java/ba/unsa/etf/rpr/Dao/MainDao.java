@@ -131,7 +131,6 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
             PreparedStatement stmt = connection.prepareStatement(builder.toString());
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                System.out.println(entry + " " + counter);
                 if (entry.getKey().equals("id")) continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;

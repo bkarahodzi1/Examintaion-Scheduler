@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.Dao;
 
 public class DaoFactory {
     private static final DoctorDao DoctorDao = new DoctorDaoSQLImpl();
-    private static final ExaminationDao ExaminationDao = new ExaminationDaoSQLImpl();
+    private static final ExaminationDao ExaminationDao = ExaminationDaoSQLImpl.getSingleton();
     private static final PatientDao PatientDao = new PatientDaoSQLImpl();
 
     private DaoFactory(){

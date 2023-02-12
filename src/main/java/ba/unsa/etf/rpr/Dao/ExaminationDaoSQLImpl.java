@@ -13,7 +13,12 @@ import java.util.TreeMap;
 
 public class ExaminationDaoSQLImpl extends MainDao<Examination> implements ExaminationDao{
 
-    public ExaminationDaoSQLImpl() {
+    private static final ExaminationDaoSQLImpl singleton = new ExaminationDaoSQLImpl();
+
+    public static ExaminationDaoSQLImpl getSingleton(){
+        return singleton;
+    }
+    private ExaminationDaoSQLImpl() {
         super("examination");
     }
 

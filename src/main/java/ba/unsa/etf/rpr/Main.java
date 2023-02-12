@@ -6,6 +6,9 @@ import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
 
 import java.io.Console;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import static javax.xml.bind.DatatypeConverter.parseInteger;
@@ -93,11 +96,12 @@ public class Main {
             break;
         }while(true);
         do {
+            List<String> Specializations = new ArrayList<String>(Arrays.asList("Anatomical Pathology", "Anesthesiology", "Cardiology", "Cardiovascular/Thoracic Surgery", "Clinical Immunology/Allergy", "Critical Care Medicine", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology and Metabolism", "Family Medicine", "Gastroenterology", "General Internal Medicine", "General Surgery", "General/Clinical Pathology", "Geriatric Medicine", "Hematology", "Medical Biochemistry", "Medical Genetics", "Medical Microbiology and Infectious Diseases", "Medical Oncology", "Nephrology", "Neurology", "Neurosurgery", "Nuclear Medicine", "Obstetrics/Gynecology", "Occupational Medicine", "Ophthalmology", "Orthopedic Surgery", "Otolaryngology", "Pediatrics", "Physical Medicine and Rehabilitation (PM & R)", "Plastic Surgery", "Psychiatry", "Public Health and Preventive Medicine (PhPm)", "Radiation Oncology", "Respirology", "Rheumatology", "Urology"));
             System.out.println("Specialization: ");
             Scanner in = new Scanner(System.in);
             String Specialization = new String("");
             Specialization = in.nextLine();
-            if(Specialization.equals("") || !Specialization.matches(".*[a-zA-z].*"))
+            if(!Specializations.contains(Specialization))
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
@@ -107,6 +111,7 @@ public class Main {
                 }
                 else return false;
             }
+            break;
         }while(true);
         return true;
     }

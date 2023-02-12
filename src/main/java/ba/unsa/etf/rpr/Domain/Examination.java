@@ -11,6 +11,16 @@ public class Examination implements Id{
 
     private String diagnosis, treatment;
 
+    public Examination() {
+    }
+
+    public Examination(Date date, Patient patient, String diagnosis, String treatment) {
+        this.date = date;
+        this.patient = patient;
+        this.diagnosis = diagnosis;
+        this.treatment = treatment;
+    }
+
     public int getId() {
         return id;
     }

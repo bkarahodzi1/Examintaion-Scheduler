@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MyExaminations {
+public class MyExaminations implements Initializable {
     public TableView<Examination> tableViewId;
     public TableColumn<Examination, String> DateId;
     public TableColumn<Examination, String> PatientId;

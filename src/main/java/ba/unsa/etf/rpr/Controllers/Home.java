@@ -43,6 +43,7 @@ public class Home implements Initializable {
         Scene tableViewScene = new Scene(tableViewParent);
         LogIn controller = loader.getController();
         String user = controller.getDoctor().getUsername();
+
         return patientInfo;
     }
 }

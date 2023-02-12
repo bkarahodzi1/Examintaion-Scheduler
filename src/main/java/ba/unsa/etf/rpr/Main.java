@@ -1,9 +1,11 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.Dao.Dao;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
 
+import java.io.Console;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +17,7 @@ public class Main {
             Scanner in = new Scanner(System.in);
             input = new String(in.nextLine());
             if (input.equals("1")) {
-                LogIn();
+                if(!LogIn())continue;
                 break;
             } else if (input.equals("2")) {
                 CreateAccount();
@@ -28,8 +30,27 @@ public class Main {
             else System.out.println("Please follow the given instructions.");
         } while (true);
     }
-    public static void LogIn(){
+    public static boolean LogIn(){
+        Scanner in = new Scanner(System.in);
+        try {
+            System.out.print("Username: ");
+            String username = new String(in.nextLine());
+            System.out.print("Password: ");
+            /*Console console = System.console();
+            char[] password = console.readPassword();*/
+            Doctor doc = DaoFactory.DoctorDao().getByUsername(username);
+            String password = new String (in.nextLine());
+            if(!doc.getPassword().equals(password))throw new HospitalException("");
 
+            return true;
+        } catch (HospitalException e) {
+            System.out.println("Incorrect username or password. To try again type 1. To go back type anything else.");
+            String input = in.nextLine();
+            if(input.equals("1"))
+                LogIn();
+            else return false;
+        }
+        return true;
     }
 
     public static void CreateAccount() {

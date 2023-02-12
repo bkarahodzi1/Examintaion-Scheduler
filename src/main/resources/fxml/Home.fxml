@@ -63,7 +63,12 @@
       </Button>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All patients">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My patients">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="allPatientsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AllPatients" text="All patients">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

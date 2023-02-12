@@ -37,6 +37,7 @@ public class AllPatients implements Initializable {
     public TableColumn<Patient,String> PhoneId;
     public TableColumn<Patient,String> BirthId;
     public TableColumn<Patient,String> HealthId;
+    public Button myExaminationsId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,5 +84,11 @@ public class AllPatients implements Initializable {
         Scene homescene = new Scene (home);
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(homescene);
+    }
+    public void MyExaminations(ActionEvent actionEvent) throws IOException {
+        Parent myexams = FXMLLoader.load(getClass().getResource("/fxml/MyExaminations.fxml"));
+        Scene myexamsscene = new Scene (myexams);
+        Stage window = (Stage) searchId.getScene().getWindow();
+        window.setScene(myexamsscene);
     }
 }

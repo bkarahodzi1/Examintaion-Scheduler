@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.AllPatients">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
@@ -82,7 +81,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My examinations" VBox.vgrow="NEVER">
+            <Button fx:id="myExaminationsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MyExaminations" text="My examinations" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

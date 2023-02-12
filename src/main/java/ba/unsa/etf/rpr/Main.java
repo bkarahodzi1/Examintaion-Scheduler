@@ -20,7 +20,7 @@ public class Main {
                 if(!LogIn())continue;
                 break;
             } else if (input.equals("2")) {
-                CreateAccount();
+                if(!CreateAccount());
                 break;
             }
             else if (input.equals("0")){
@@ -44,7 +44,7 @@ public class Main {
 
             return true;
         } catch (HospitalException e) {
-            while(in.hasNext())in.nextLine();
+            in.nextLine();
             System.out.println("Incorrect username or password. To try again type 1. To go back type anything else.");
             String input = in.nextLine();
             if(input.equals("1"))
@@ -54,7 +54,39 @@ public class Main {
         return true;
     }
 
-    public static void CreateAccount() {
-
+    public static boolean CreateAccount() {
+        do {
+            System.out.println("Full name: ");
+            Scanner in = new Scanner(System.in);
+            String name = new String("");
+            name = in.nextLine();
+            if(name.equals(""))
+            {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if(input.equals("1")){
+                    CreateAccount();
+                    break;
+                }
+                else return false;
+            }
+        }while(true);
+        do {
+            System.out.println("Seniority: ");
+            Scanner in = new Scanner(System.in);
+            String Seniority = new String("");
+            Seniority = in.nextLine();
+            if(Seniority.equals("") || Seniority.matches(".*[a-zA-z].*"))
+            {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if(input.equals("1")){
+                    CreateAccount();
+                    break;
+                }
+                else return false;
+            }
+        }while(true);
+        return true;
     }
 }

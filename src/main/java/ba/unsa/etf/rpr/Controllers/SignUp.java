@@ -160,4 +160,39 @@ public class SignUp implements Initializable {
         primaryStage.show();
         closing.close();
     }
+
+    public void NamePressedEnter(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            SeniorityId.requestFocus();
+        }
+    }
+
+    public void SeniorityPressedEnter(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            SpecId.requestFocus();
+        }
+    }
+
+    public void UsernamePressedEnter(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            PasswordId.requestFocus();
+        }
+    }
+
+    public void PasswordPressedEnter(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            RepeatId.requestFocus();
+        }
+    }
+
+    public void RepeatPressedEnter(KeyEvent keyEvent) throws HospitalException, IOException {
+        if(keyEvent.getCode().equals(KeyCode.ENTER))
+        {
+            signUp();
+        }
+    }
 }

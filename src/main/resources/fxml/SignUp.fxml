@@ -52,7 +52,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="NameId" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="NameId" onKeyPressed="#NamePressedEnter" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="16.0" />
          </font>
@@ -68,7 +68,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Spinner fx:id="SeniorityId" prefWidth="590.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Spinner fx:id="SeniorityId" onKeyPressed="#SeniorityPressedEnter" prefWidth="590.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -94,7 +94,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="UsernameId" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField fx:id="UsernameId" onKeyPressed="#UsernamePressedEnter" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="16.0" />
          </font>
@@ -110,7 +110,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="PasswordId" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <PasswordField fx:id="PasswordId" onKeyPressed="#PasswordPressedEnter" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="16.0" />
          </font>
@@ -126,7 +126,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="RepeatId" GridPane.columnIndex="1" GridPane.rowIndex="10">
+      <PasswordField fx:id="RepeatId" onKeyPressed="#RepeatPressedEnter" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <font>
             <Font size="16.0" />
          </font>

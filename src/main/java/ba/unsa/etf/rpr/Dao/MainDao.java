@@ -136,12 +136,7 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
-            System.out.println(stmt);
-            System.out.println(builder);
-            System.out.println(row);
-            System.out.println(updateColumns);
             stmt.setObject(counter, item.getId());
-            System.out.println(stmt);
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){

@@ -3,8 +3,11 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Examination;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -40,5 +43,23 @@ public class ExaminationDaoSQLImpl extends MainDao<Examination> implements Exami
         row.put("diagnosis",object.getDiagnosis());
         row.put("treatment",object.getTreatment());
         return row;
+    }
+
+    @Override
+    public List<Examination> getByDoctor() throws HospitalException {
+        String query = "SELECT * FROM examination e, doctor d WHERE e.doctor=d.id";
+        List<Examination> results = new ArrayList<Examination>();
+        try{
+            PreparedStatement stmt = MainDao.getConnection().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Examination object = convertRow(rs);
+                results.add(object);
+            }
+            rs.close();
+            return results;
+        }catch (SQLException e){
+            throw new HospitalException(e.getMessage(), e);
+        }
     }
 }

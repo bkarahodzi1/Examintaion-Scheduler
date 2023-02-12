@@ -7,6 +7,10 @@ import java.sql.*;
 import java.util.*;
 
 public abstract class MainDao<T extends Id> implements Dao<T>{
+    public static Connection getConnection() {
+        return connection;
+    }
+
     private static Connection connection;
     private String tableName;
     static {

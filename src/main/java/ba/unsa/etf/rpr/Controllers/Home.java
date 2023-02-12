@@ -1,8 +1,11 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Domain.Doctor;
 import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Domain.PatientExam;
+import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import com.sun.javafx.scene.traversal.ParentTraversalEngine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,12 +33,12 @@ public class Home implements Initializable {
             patientId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("name"));
             diagnosisId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("diagnosis"));
             tableViewId.setItems(getPatientInfo());
-        } catch (IOException e) {
+        } catch (IOException | HospitalException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ObservableList<PatientExam> getPatientInfo() throws IOException {
+    public ObservableList<PatientExam> getPatientInfo() throws IOException, HospitalException {
         ObservableList<PatientExam> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
@@ -43,7 +46,7 @@ public class Home implements Initializable {
         Scene tableViewScene = new Scene(tableViewParent);
         LogIn controller = loader.getController();
         String user = controller.getDoctor().getUsername();
-
+        Doctor doc = DaoFactory.DoctorDao().getByUsername(user);
         return patientInfo;
     }
 }

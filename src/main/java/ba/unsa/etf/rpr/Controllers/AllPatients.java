@@ -91,4 +91,25 @@ public class AllPatients implements Initializable {
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(myexamsscene);
     }
+
+    public void NameEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setName(patientStringCellEditEvent.getNewValue());
+        DaoFactory.PatientDao().update(patient);
+    }
+
+    public void PlaceEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    }
+
+    public void AddressEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    }
+
+    public void PhoneEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    }
+
+    public void BirthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    }
+
+    public void HealthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    }
 }

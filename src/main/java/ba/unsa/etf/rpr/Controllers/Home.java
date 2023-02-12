@@ -20,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,6 +66,10 @@ public class Home implements Initializable {
     }
 
     public void SearchForPatient(ActionEvent actionEvent) throws HospitalException, IOException {
+        tableViewId.setItems(getPatientInfo(nameSearch.getText()));
+    }
+
+    public void KEyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 }

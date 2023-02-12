@@ -104,11 +104,6 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Change patient info" VBox.vgrow="NEVER">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
       <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="All patients" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">

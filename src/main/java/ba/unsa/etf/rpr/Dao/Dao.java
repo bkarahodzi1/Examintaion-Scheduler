@@ -9,8 +9,6 @@ public interface Dao<T> {
     T getById(int id) throws HospitalException;
 
 
-    T getByUsername(String user) throws HospitalException;
-
     T add(T item) throws HospitalException;
 
 

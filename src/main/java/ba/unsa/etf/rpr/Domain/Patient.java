@@ -13,7 +13,8 @@ public class Patient implements Id{
 
     }
 
-    public Patient(String name, String place, String address, String phone_num, Date birth_date, boolean health_insurance) {
+    public Patient(int id, String name, String place, String address, String phone_num, Date birth_date, boolean health_insurance) {
+        this.id = id;
         this.name = name;
         this.place = place;
         this.address = address;

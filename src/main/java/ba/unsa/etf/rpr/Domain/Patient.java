@@ -80,15 +80,7 @@ public class Patient implements Id{
 
     @Override
     public String toString() {
-        return "Patient {" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", place='" + place + '\'' +
-                ", address='" + address + '\'' +
-                ", phone_num='" + phone_num + '\'' +
-                ", brith_date=" + birth_date +
-                ", health_insurance=" + health_insurance +
-                '}';
+        return name;
     }
 
     @Override

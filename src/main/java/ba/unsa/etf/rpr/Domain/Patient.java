@@ -9,6 +9,19 @@ public class Patient implements Id{
     private Date birth_date;
     private boolean health_insurance;
 
+    public Patient() {
+
+    }
+
+    public Patient(String name, String place, String address, String phone_num, Date birth_date, boolean health_insurance) {
+        this.name = name;
+        this.place = place;
+        this.address = address;
+        this.phone_num = phone_num;
+        this.birth_date = birth_date;
+        this.health_insurance = health_insurance;
+    }
+
     public int getId() {
         return id;
     }

@@ -26,26 +26,35 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AllPatients implements Initializable {
-    public TableView<PatientExam> tableViewId;
-    public TableColumn<PatientExam, String> patientId;
-    public TableColumn<PatientExam, String> diagnosisId;
+    public TableView<Patient> tableViewId;
     public Button searchId;
     public TextField nameSearch;
     public Button allPatientsId;
+    public Button myPatientsId;
+    public TableColumn<Patient,String> NameId;
+    public TableColumn<Patient,String> PlaceId;
+    public TableColumn<Patient,String> AddressID;
+    public TableColumn<Patient,String> PhoneId;
+    public TableColumn<Patient,String> BirthId;
+    public TableColumn<Patient,String> HealthId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            patientId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("name"));
-            diagnosisId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("diagnosis"));
+            NameId.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
+            PlaceId.setCellValueFactory(new PropertyValueFactory<Patient, String>("place"));
+            AddressID.setCellValueFactory(new PropertyValueFactory<Patient, String>("address"));
+            PhoneId.setCellValueFactory(new PropertyValueFactory<Patient, String>("phone_num"));
+            BirthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("birth_date"));
+            HealthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("health_insurance"));
             tableViewId.setItems(getPatientInfo(""));
         } catch (IOException | HospitalException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ObservableList<PatientExam> getPatientInfo(String name) throws IOException, HospitalException {
-        ObservableList<PatientExam> patientInfo = FXCollections.observableArrayList();
+    public ObservableList<Patient> getPatientInfo(String name) throws IOException, HospitalException {
+        ObservableList<Patient> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
         Parent tableViewParent = loader.load();
@@ -53,12 +62,8 @@ public class AllPatients implements Initializable {
         LogIn controller = loader.getController();
         String user = controller.getDoctor().getUsername();
         List<Patient> patients = DaoFactory.PatientDao().getAll();
-        List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(user);
-        for(Examination e: exams){
-            for(Patient p : patients){
-                if(e.getPatient().equals(p) && name.equals(""))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
-                else if(e.getPatient().equals(p) && e.getPatient().getName().contains(name))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
-            }
+        for(Patient p : patients) {
+            patientInfo.add(new Patient(p.getName(), p.getPlace(),p.getAddress(),p.getPhone_num(),p.getBirth_date(),p.isHealth_insurance()));
         }
         return patientInfo;
     }
@@ -71,10 +76,11 @@ public class AllPatients implements Initializable {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
-    public void AllPatients(ActionEvent actionEvent) throws IOException {
-        Parent allpateints = FXMLLoader.load(getClass().getResource("/fxml/AllPatients.fxml"));
-        Scene allpatientsscene = new Scene (allpateints);
+
+    public void MyPatients(ActionEvent actionEvent) throws IOException {
+        Parent home = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+        Scene homescene = new Scene (home);
         Stage window = (Stage) searchId.getScene().getWindow();
-        window.setScene(allpatientsscene);
+        window.setScene(homescene);
     }
 }

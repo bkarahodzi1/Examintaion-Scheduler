@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -31,19 +32,20 @@ public class Home implements Initializable {
     public TableColumn<PatientExam, String> patientId;
     public TableColumn<PatientExam, String> diagnosisId;
     public Button searchId;
+    public TextField nameSearch;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             patientId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("name"));
             diagnosisId.setCellValueFactory(new PropertyValueFactory<PatientExam, String>("diagnosis"));
-            tableViewId.setItems(getPatientInfo());
+            tableViewId.setItems(getPatientInfo(""));
         } catch (IOException | HospitalException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ObservableList<PatientExam> getPatientInfo() throws IOException, HospitalException {
+    public ObservableList<PatientExam> getPatientInfo(String name) throws IOException, HospitalException {
         ObservableList<PatientExam> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
@@ -55,12 +57,14 @@ public class Home implements Initializable {
         List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(user);
         for(Examination e: exams){
             for(Patient p : patients){
-                if(e.getPatient().equals(p))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
+                if(e.getPatient().equals(p) && name.equals(""))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
+                else if(e.getPatient().equals(p) && e.getPatient().getName().contains(name))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
             }
         }
         return patientInfo;
     }
 
-    public void SearchForPatient(ActionEvent actionEvent) {
+    public void SearchForPatient(ActionEvent actionEvent) throws HospitalException, IOException {
+        tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 }

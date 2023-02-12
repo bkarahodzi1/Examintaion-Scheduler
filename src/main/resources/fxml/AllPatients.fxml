@@ -31,7 +31,7 @@
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="314.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" maxWidth="1.7976931348623157E308" style="-fx-background-color: #327AFFFF;" text="Home" textFill="WHITE" GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" maxWidth="1.7976931348623157E308" style="-fx-background-color: #327AFFFF;" text="Home" textFill="WHITE" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
                <font>
                   <Font size="16.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
-            <TableView fx:id="tableViewId" prefHeight="304.0" prefWidth="0.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.rowSpan="2147483647" GridPane.vgrow="ALWAYS">
+            <TableView fx:id="tableViewId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="0.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" GridPane.rowSpan="2147483647">
               <columns>
                 <TableColumn fx:id="NameId" maxWidth="1.7976931348623157E308" prefWidth="128.0" text="Name" />
                   <TableColumn fx:id="PlaceId" prefWidth="128.0" text="Place" />
@@ -113,7 +113,7 @@
                   </Button>
                </children>
             </VBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="All patients" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="All patients" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>

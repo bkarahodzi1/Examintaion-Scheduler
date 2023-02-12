@@ -77,7 +77,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My examinations" VBox.vgrow="NEVER">
+            <Button fx:id="myExaminationsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MyExaminations" text="My examinations" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

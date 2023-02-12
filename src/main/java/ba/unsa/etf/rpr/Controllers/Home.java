@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Dao.Dao;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Doctor;
 import ba.unsa.etf.rpr.Domain.Examination;
@@ -19,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Home implements Initializable {
@@ -46,7 +48,13 @@ public class Home implements Initializable {
         Scene tableViewScene = new Scene(tableViewParent);
         LogIn controller = loader.getController();
         String user = controller.getDoctor().getUsername();
-        Doctor doc = DaoFactory.DoctorDao().getByUsername(user);
+        List<Patient> patients = DaoFactory.PatientDao().getAll();
+        List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(user);
+        for(Examination e: exams){
+            for(Patient p : patients){
+                if(e.getPatient().equals(p))patientInfo.add(new PatientExam(p.getName(),e.getDiagnosis()));
+            }
+        }
         return patientInfo;
     }
 }

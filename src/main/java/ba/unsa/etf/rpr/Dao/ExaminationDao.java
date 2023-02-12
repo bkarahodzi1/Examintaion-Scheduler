@@ -11,5 +11,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ExaminationDao extends Dao<Examination> {
-    public List<Examination> getByDoctor() throws HospitalException;
+    public List<Examination> getByDoctor(String user) throws HospitalException;
 }

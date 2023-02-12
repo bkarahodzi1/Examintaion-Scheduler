@@ -5,6 +5,10 @@ import java.util.Objects;
 public class PatientExam {
     private String name;
     private String diagnosis;
+    public PatientExam(String name, String diagnosis){
+        this.name=name;
+        this.diagnosis=diagnosis;
+    }
 
     public String getName() {
         return name;

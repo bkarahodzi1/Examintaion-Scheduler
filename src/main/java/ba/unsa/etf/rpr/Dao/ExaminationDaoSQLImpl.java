@@ -46,7 +46,7 @@ public class ExaminationDaoSQLImpl extends MainDao<Examination> implements Exami
     }
 
     @Override
-    public List<Examination> getByDoctor() throws HospitalException {
+    public List<Examination> getByDoctor(String user) throws HospitalException {
         String query = "SELECT * FROM examination e, doctor d WHERE e.doctor=d.id";
         List<Examination> results = new ArrayList<Examination>();
         try{

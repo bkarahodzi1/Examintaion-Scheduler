@@ -20,7 +20,6 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
             Patient pat = new Patient();
             pat.setId(rs.getInt("id"));
             pat.setName(rs.getString("name"));
-            pat.setSurname(rs.getString("surname"));
             pat.setAddress(rs.getString("address"));
             pat.setPlace(rs.getString("place"));
             pat.setPhone_num(rs.getString("phone_num"));
@@ -37,7 +36,6 @@ public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
         Map<String, Object> row = new TreeMap<>();
         row.put("id",object.getId());
         row.put("name",object.getName());
-        row.put("surname",object.getSurname());
         row.put("address",object.getAddress());
         row.put("place",object.getPlace());
         row.put("phone_num",object.getPhone_num());

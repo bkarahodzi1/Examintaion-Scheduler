@@ -129,8 +129,8 @@ public class SignUp implements Initializable {
         temporaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         temporaryStage.show();
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
-        primaryStage.setTitle("Hospital main page");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/LogIn.fxml")));
+        primaryStage.setTitle("Log in");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));

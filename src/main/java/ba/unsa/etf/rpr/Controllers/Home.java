@@ -21,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,7 +75,10 @@ public class Home implements Initializable {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
-    public void AllPatients(ActionEvent actionEvent) {
-
+    public void AllPatients(ActionEvent actionEvent) throws IOException {
+        Parent allpateints = FXMLLoader.load(getClass().getResource("/fxml/AllPatients.fxml"));
+        Scene allpatientsscene = new Scene (allpateints);
+        Stage window = (Stage) searchId.getScene().getWindow();
+        window.setScene(allpatientsscene);
     }
 }

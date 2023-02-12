@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.AllPatients">
    <children>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
@@ -67,7 +66,7 @@
             </Button>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My patients">
+                  <Button fx:id="myPateitnsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MyPatients" text="My patients">
                      <font>
                         <Font size="16.0" />
                      </font>

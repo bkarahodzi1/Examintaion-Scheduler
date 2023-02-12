@@ -44,6 +44,7 @@ public class Main {
 
             return true;
         } catch (HospitalException e) {
+            while(in.hasNext())in.nextLine();
             System.out.println("Incorrect username or password. To try again type 1. To go back type anything else.");
             String input = in.nextLine();
             if(input.equals("1"))

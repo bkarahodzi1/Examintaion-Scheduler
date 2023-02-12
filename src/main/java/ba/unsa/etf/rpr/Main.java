@@ -20,7 +20,7 @@ public class Main {
                 if(!LogIn())continue;
                 break;
             } else if (input.equals("2")) {
-                if(!CreateAccount());
+                if(!CreateAccount())continue;
                 break;
             }
             else if (input.equals("0")){
@@ -70,6 +70,7 @@ public class Main {
                 }
                 else return false;
             }
+            break;
         }while(true);
         do {
             System.out.println("Seniority: ");
@@ -86,7 +87,25 @@ public class Main {
                 }
                 else return false;
             }
+            break;
+        }while(true);
+        do {
+            System.out.println("Specialization: ");
+            Scanner in = new Scanner(System.in);
+            String Specialization = new String("");
+            Specialization = in.nextLine();
+            if(Specialization.equals("") || !Specialization.matches(".*[a-zA-z].*"))
+            {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if(input.equals("1")){
+                    CreateAccount();
+                    break;
+                }
+                else return false;
+            }
         }while(true);
         return true;
     }
+
 }

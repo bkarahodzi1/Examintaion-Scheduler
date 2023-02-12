@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -36,8 +37,12 @@ public class Home implements Initializable {
 
     public ObservableList<PatientExam> getPatientInfo() throws IOException {
         ObservableList<PatientExam> patientInfo = FXCollections.observableArrayList();
-
-        patientInfo.add(new PatientExam());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
+        Parent tableViewParent = loader.load();
+        Scene tableViewScene = new Scene(tableViewParent);
+        LogIn controller = loader.getController();
+        String user = controller.getDoctor().getUsername();
         return patientInfo;
     }
 }

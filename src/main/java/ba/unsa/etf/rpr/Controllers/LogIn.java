@@ -20,6 +20,7 @@ import java.util.Objects;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class LogIn {
+    private static Doctor doctor;
     public Button LoginId;
     public Hyperlink CreateAccId;
     public PasswordField PasswordId;
@@ -59,8 +60,8 @@ public class LogIn {
                 ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
                 return;
             }
-            Doctor doc = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
-            if(doc.getPassword().equals(PasswordId.getText())){
+            doctor = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
+            if(doctor.getPassword().equals(PasswordId.getText())){
                 UsernameId.setStyle("-fx-border-color: #00FF00 ");
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");
                 ErrorId.setPrefHeight(0);
@@ -68,7 +69,7 @@ public class LogIn {
                 Stage closing = (Stage) LoginId.getScene().getWindow();
                 Stage primaryStage = new Stage();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
-                primaryStage.setTitle(UsernameId.getText()+"'s homepage");
+                primaryStage.setTitle("Hospital");
                 primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 primaryStage.setResizable(true);
                 primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
@@ -101,5 +102,8 @@ public class LogIn {
         primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));
         primaryStage.show();
         closing.close();
+    }
+    public Doctor getDoctor(){
+        return doctor;
     }
 }

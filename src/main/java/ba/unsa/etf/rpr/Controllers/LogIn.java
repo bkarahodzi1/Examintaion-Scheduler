@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
-public class Controller1 {
+public class LogIn {
     public Button LoginId;
     public Hyperlink CreateAccId;
     public PasswordField PasswordId;
@@ -68,7 +68,7 @@ public class Controller1 {
                 Stage closing = (Stage) LoginId.getScene().getWindow();
                 Stage primaryStage = new Stage();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
-                primaryStage.setTitle("Hospital");
+                primaryStage.setTitle(UsernameId.getText()+"'s homepage");
                 primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 primaryStage.setResizable(true);
                 primaryStage.getIcons().add(new Image("C:\\Users\\Svage\\IdeaProjects\\projekatB\\src\\main\\resources\\Images\\v987-18a.jpg"));

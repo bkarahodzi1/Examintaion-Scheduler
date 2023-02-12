@@ -35,4 +35,11 @@ public class PatientExam {
         return Objects.hash(name, diagnosis);
     }
 
+    @Override
+    public String toString() {
+        return "PatientExam{" +
+                "name='" + name + '\'' +
+                ", diagnosis='" + diagnosis + '\'' +
+                '}';
+    }
 }

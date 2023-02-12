@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
+import ba.unsa.etf.rpr.Domain.PatientExam;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -15,8 +16,8 @@ import java.util.ResourceBundle;
 public class Home implements Initializable {
 
     public TableView tableViewId;
-    public TableColumn<Patient, String> patientId;
-    public TableColumn<Examination, String> diagnosisId;
+    public TableColumn<PatientExam, String> patientId;
+    public TableColumn<PatientExam, String> diagnosisId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

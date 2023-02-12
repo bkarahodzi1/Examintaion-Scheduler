@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.Dao;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -39,5 +40,25 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
         row.put("username",object.getUsername());
         row.put("password",object.getPassword());
         return row;
+    }
+
+    @Override
+
+    public Doctor getByUsername(String user) throws HospitalException {
+        String query = "SELECT * FROM doctor WHERE username = ?";
+        try {
+            PreparedStatement statement = MainDao.getConnection().prepareStatement(query);
+            statement.setString(1, user);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                Doctor result = convertRow(rs);
+                rs.close();
+                return result;
+            } else {
+                throw new HospitalException("Object not found");
+            }
+        } catch (SQLException e) {
+            throw new HospitalException(e.getMessage(), e);
+        }
     }
 }

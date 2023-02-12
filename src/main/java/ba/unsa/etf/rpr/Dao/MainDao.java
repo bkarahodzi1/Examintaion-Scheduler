@@ -50,23 +50,6 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
             throw new HospitalException(e.getMessage(), e);
         }
     }
-    public T getByUsername(String user) throws HospitalException {
-        String query = "SELECT * FROM "+this.tableName+" WHERE username = ?";
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, user);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                T result = convertRow(rs);
-                rs.close();
-                return result;
-            } else {
-                throw new HospitalException("Object not found");
-            }
-        } catch (SQLException e) {
-            throw new HospitalException(e.getMessage(), e);
-        }
-    }
     public List<T> getAll() throws HospitalException {
         String query = "SELECT * FROM "+ tableName;
         List<T> results = new ArrayList<T>();
@@ -148,11 +131,17 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
             PreparedStatement stmt = connection.prepareStatement(builder.toString());
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
+                System.out.println(entry + " " + counter);
                 if (entry.getKey().equals("id")) continue;
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
-            stmt.setObject(counter+1, item.getId());
+            System.out.println(stmt);
+            System.out.println(builder);
+            System.out.println(row);
+            System.out.println(updateColumns);
+            stmt.setObject(counter, item.getId());
+            System.out.println(stmt);
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){

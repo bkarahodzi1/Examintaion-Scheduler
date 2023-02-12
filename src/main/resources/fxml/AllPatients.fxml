@@ -39,12 +39,13 @@
       </Label>
       <TableView fx:id="tableViewId" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="0.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" GridPane.rowSpan="2147483647">
         <columns>
-          <TableColumn fx:id="NameId" maxWidth="1.7976931348623157E308" onEditCommit="#NameEdit" prefWidth="128.0" text="Name" />
-            <TableColumn fx:id="PlaceId" onEditCommit="#PlaceEdit" prefWidth="128.0" text="Place" />
-            <TableColumn fx:id="AddressID" onEditCommit="#AddressEdit" prefWidth="128.0" text="Address" />
-            <TableColumn fx:id="PhoneId" maxWidth="1.7976931348623157E308" minWidth="-1.0" onEditCommit="#PhoneEdit" prefWidth="128.0" text="Phone number" />
-            <TableColumn fx:id="BirthId" onEditCommit="#BirthEdit" prefWidth="128.0" text="Birth date" />
-            <TableColumn fx:id="HealthId" onEditCommit="#HealthEdit" prefWidth="128.0" text="Health insurance" />
+            <TableColumn fx:id="PPINId" prefWidth="110.0" text="PPIN" />
+          <TableColumn fx:id="NameId" maxWidth="1.7976931348623157E308" onEditCommit="#NameEdit" prefWidth="110.0" text="Name" />
+            <TableColumn fx:id="PlaceId" onEditCommit="#PlaceEdit" prefWidth="110.0" text="Place" />
+            <TableColumn fx:id="AddressID" onEditCommit="#AddressEdit" prefWidth="110.0" text="Address" />
+            <TableColumn fx:id="PhoneId" maxWidth="1.7976931348623157E308" minWidth="-1.0" onEditCommit="#PhoneEdit" prefWidth="110.0" text="Phone number" />
+            <TableColumn fx:id="BirthId" onEditCommit="#BirthEdit" prefWidth="110.0" text="Birth date" />
+            <TableColumn fx:id="HealthId" onEditCommit="#HealthEdit" prefWidth="110.0" text="Health insurance" />
         </columns>
          <GridPane.margin>
             <Insets left="10.0" right="10.0" top="10.0" />

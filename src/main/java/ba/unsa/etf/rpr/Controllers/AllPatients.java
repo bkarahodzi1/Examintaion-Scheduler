@@ -17,11 +17,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,10 +41,12 @@ public class AllPatients implements Initializable {
     public TableColumn<Patient,String> BirthId;
     public TableColumn<Patient,String> HealthId;
     public Button myExaminationsId;
+    public TableColumn <Patient,Integer> PPINId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            PPINId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
             NameId.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
             PlaceId.setCellValueFactory(new PropertyValueFactory<Patient, String>("place"));
             AddressID.setCellValueFactory(new PropertyValueFactory<Patient, String>("address"));
@@ -49,6 +54,9 @@ public class AllPatients implements Initializable {
             BirthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("birth_date"));
             HealthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("health_insurance"));
             tableViewId.setItems(getPatientInfo(""));
+            tableViewId.setEditable(true);
+            NameId.setCellFactory(TextFieldTableCell.forTableColumn());
+            PlaceId.setCellFactory(TextFieldTableCell.forTableColumn());
         } catch (IOException | HospitalException e) {
             throw new RuntimeException(e);
         }
@@ -98,18 +106,33 @@ public class AllPatients implements Initializable {
         DaoFactory.PatientDao().update(patient);
     }
 
-    public void PlaceEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    public void PlaceEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setPlace(patientStringCellEditEvent.getNewValue());
+        DaoFactory.PatientDao().update(patient);
     }
 
-    public void AddressEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    public void AddressEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setAddress(patientStringCellEditEvent.getNewValue());
+        DaoFactory.PatientDao().update(patient);
     }
 
-    public void PhoneEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    public void PhoneEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setPhone_num(patientStringCellEditEvent.getNewValue());
+        DaoFactory.PatientDao().update(patient);
     }
 
-    public void BirthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    public void BirthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException, ParseException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setBirth_date(new SimpleDateFormat("dd/MM/yyyy").parse(patientStringCellEditEvent.getNewValue()));
+        DaoFactory.PatientDao().update(patient);
     }
 
-    public void HealthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) {
+    public void HealthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        Patient patient = tableViewId.getSelectionModel().getSelectedItem();
+        patient.setHealth_insurance(patientStringCellEditEvent.getNewValue().equals("true"));
+        DaoFactory.PatientDao().update(patient);
     }
 }

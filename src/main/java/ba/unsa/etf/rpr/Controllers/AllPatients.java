@@ -63,7 +63,8 @@ public class AllPatients implements Initializable {
         String user = controller.getDoctor().getUsername();
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         for(Patient p : patients) {
-            patientInfo.add(new Patient(p.getName(), p.getPlace(),p.getAddress(),p.getPhone_num(),p.getBirth_date(),p.isHealth_insurance()));
+            if(name.equals("") || p.getName().equals(name))
+                patientInfo.add(new Patient(p.getName(), p.getPlace(),p.getAddress(),p.getPhone_num(),p.getBirth_date(),p.isHealth_insurance()));
         }
         return patientInfo;
     }

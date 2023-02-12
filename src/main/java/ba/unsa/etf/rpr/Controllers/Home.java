@@ -34,6 +34,7 @@ public class Home implements Initializable {
     public TableColumn<PatientExam, String> diagnosisId;
     public Button searchId;
     public TextField nameSearch;
+    public Button allPatientsId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,5 +72,9 @@ public class Home implements Initializable {
 
     public void KEyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
+    }
+
+    public void AllPatients(ActionEvent actionEvent) {
+
     }
 }

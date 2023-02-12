@@ -44,6 +44,7 @@ public class SignUp implements Initializable {
     public Label label5;
     public GridPane GridId;
     public RowConstraints Row2;
+    public Button logBackInId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -146,5 +147,8 @@ public class SignUp implements Initializable {
         if(keyEvent.getCode().equals(KeyCode.ENTER)){
             signUp();
         }
+    }
+
+    public void LogBackIn(ActionEvent actionEvent) {
     }
 }

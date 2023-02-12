@@ -10,10 +10,12 @@ import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import com.sun.javafx.scene.traversal.ParentTraversalEngine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +30,7 @@ public class Home implements Initializable {
     public TableView<PatientExam> tableViewId;
     public TableColumn<PatientExam, String> patientId;
     public TableColumn<PatientExam, String> diagnosisId;
+    public Button searchId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,5 +59,8 @@ public class Home implements Initializable {
             }
         }
         return patientInfo;
+    }
+
+    public void SearchForPatient(ActionEvent actionEvent) {
     }
 }

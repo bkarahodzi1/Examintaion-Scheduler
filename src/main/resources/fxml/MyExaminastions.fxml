@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.AllPatients">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.Controllers.MyExaminations">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
     <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="0.0" />
@@ -40,7 +40,7 @@
       <TableView fx:id="tableViewId" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="304.0" prefWidth="0.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" GridPane.rowSpan="2147483647">
         <columns>
           <TableColumn fx:id="DateId" maxWidth="1.7976931348623157E308" prefWidth="192.0" text="Date" />
-            <TableColumn fx:id="PAtientIdPlaceId" prefWidth="192.0" text="Patient" />
+            <TableColumn fx:id="PatientId" prefWidth="192.0" text="Patient" />
             <TableColumn fx:id="DiagnosisId" prefWidth="192.0" text="Diagnosis" />
             <TableColumn fx:id="TreatmentId" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="192.0" text="Treatment" />
         </columns>
@@ -71,7 +71,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="allPatientsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="All patients" VBox.vgrow="NEVER">
+            <Button fx:id="allPatientsId" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#AllPatients" text="All patients" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

@@ -8,6 +8,8 @@ import ba.unsa.etf.rpr.Domain.Doctor;
 import java.io.Console;
 import java.util.Scanner;
 
+import static javax.xml.bind.DatatypeConverter.parseInteger;
+
 public class Main {
     public static void main(String[] args) throws HospitalException {
         String input;
@@ -77,7 +79,8 @@ public class Main {
             Scanner in = new Scanner(System.in);
             String Seniority = new String("");
             Seniority = in.nextLine();
-            if(Seniority.equals("") || Seniority.matches(".*[a-zA-z].*"))
+            int SenInt = Integer.parseInt(Seniority);
+            if(Seniority.equals("") || Seniority.matches(".*[a-zA-z].*") || SenInt<0 || SenInt>45)
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();

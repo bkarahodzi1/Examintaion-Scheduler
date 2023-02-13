@@ -178,7 +178,7 @@ public class Main {
     }
 
 
-    private static void Homepage(String username) throws HospitalException {
+    private static void Homepage(String username) throws HospitalException, InterruptedException {
         Scanner in = new Scanner(System.in);
         System.out.println("\nWelcome!\n");
         List<Patient> patients = DaoFactory.PatientDao().getAll();
@@ -200,10 +200,14 @@ public class Main {
                 }
             }
             do{
-                System.out.println("\nTo search for any patient type 1, to see your patient list again type 2, to see all patients type 3, to exit type 0");
+                System.out.println("\nTo search for any patient type 1, to see all patients type 2, to see your patient list again type 3, to exit type 0.");
                 String input = new String("");
                 input = in.nextLine();
-                if (input.equals("0"))return;
+                if (input.equals("0")) {
+                    System.out.println("Goodbye.");
+                    Thread.sleep(1000);
+                    return;
+                }
                 else if(input.equals("1")){
                     System.out.println("Search: ");
                     String search = new String(in.nextLine());
@@ -236,8 +240,8 @@ public class Main {
                         }
                     }
                 }
-                else if(input.equals("2"))break;
-                else if(input.equals("3")){
+                else if(input.equals("3"))break;
+                else if(input.equals("2")){
                     System.out.println("All patients: ");
                     System.out.println("Patient             Place               Address             Phone number        Birth date          Health insurance");
                     for (Patient p : patients) {

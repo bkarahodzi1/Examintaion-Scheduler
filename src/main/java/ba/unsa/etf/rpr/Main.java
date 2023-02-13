@@ -188,13 +188,23 @@ public class Main {
         System.out.println("\nWelcome!\n");
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
-        for(Examination e: exams){
-            for(Patient p : patients){
-                if(e.getPatient().equals(p)) System.out.println(p.getName()+" "+e.getDiagnosis());
+        do{
+            for (Examination e : exams) {
+                for (Patient p : patients) {
+                    if (e.getPatient().equals(p)) System.out.println(p.getName() + " " + e.getDiagnosis());
+                }
             }
-        }
-        System.out.println("To search for any patient type 1, to exit type 0");
-        String input = new String("");
-        input = in.nextLine();
+            do{
+                System.out.println("To search for any patient type 1, to see your patient list again type 2, to exit type 0");
+                String input = new String("");
+                input = in.nextLine();
+                if (input.equals("0"))return;
+                else if(input.equals("1")){
+                    System.out.println("Search: ");
+                    String search = new String(in.nextLine());
+
+                }
+            }while(true);
+        }while(true);
     }
 }

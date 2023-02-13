@@ -1,21 +1,16 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.Dao.Dao;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.Domain.PatientExam;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
-import com.sun.tools.jdeprscan.scan.Scan;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static javax.xml.bind.DatatypeConverter.parseInteger;
 
 public class Main {
     public static void main(String[] args) throws HospitalException, InterruptedException {
@@ -44,6 +39,7 @@ public class Main {
 
     private static boolean LogIn(){
         Scanner in = new Scanner(System.in);
+        String password = new String ("");
         try {
             System.out.print("Username: ");
             String username = new String(in.nextLine());
@@ -51,12 +47,11 @@ public class Main {
             /*Console console = System.console();
             char[] password = console.readPassword();*/
             Doctor doc = DaoFactory.DoctorDao().getByUsername(username);
-            String password = new String (in.nextLine());
+            password = in.nextLine();
             if(!doc.getPassword().equals(password))throw new HospitalException("");
-
             return true;
         } catch (HospitalException e) {
-            in.nextLine();
+            if(password.equals(""))in.nextLine();
             System.out.println("Incorrect username or password. To try again type 1. To go back type anything else.");
             String input = in.nextLine();
             if(input.equals("1"))
@@ -189,9 +184,15 @@ public class Main {
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
         do{
+            System.out.println("Patient               Diagnosis");
             for (Examination e : exams) {
                 for (Patient p : patients) {
-                    if (e.getPatient().equals(p)) System.out.println(p.getName() + " " + e.getDiagnosis());
+                    if (e.getPatient().equals(p)) {
+                        String space = " ";
+                        System.out.print(p.getName());
+                        System.out.print(space.repeat(20-p.getName().length()));
+                        System.out.println(e.getDiagnosis());
+                    }
                 }
             }
             do{
@@ -202,7 +203,11 @@ public class Main {
                 else if(input.equals("1")){
                     System.out.println("Search: ");
                     String search = new String(in.nextLine());
-
+                    for (Examination e : exams) {
+                        for (Patient p : patients) {
+                            if (e.getPatient().equals(p) && p.getName().contains(search)) System.out.println(p.getName() + " " + e.getDiagnosis());
+                        }
+                    }
                 }
             }while(true);
         }while(true);

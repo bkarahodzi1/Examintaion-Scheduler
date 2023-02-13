@@ -266,18 +266,24 @@ public class Main {
                             if (p.getName().length() >= 17) {
                                 System.out.print(p.getName().substring(0, 17));
                                 System.out.print("...");
-                            } else System.out.print(p.getName());
-                            System.out.print(space.repeat(20 - p.getName().length()));
+                            } else {
+                                System.out.print(p.getName());
+                                System.out.print(space.repeat(20 - p.getName().length()));
+                            }
                             if (p.getPlace().length() >= 17) {
                                 System.out.print(p.getPlace().substring(0, 17));
                                 System.out.print("...");
-                            } else System.out.print(p.getPlace());
-                            System.out.print(space.repeat(20 - p.getPlace().length()));
+                            } else {
+                                System.out.print(p.getPlace());
+                                System.out.print(space.repeat(20 - p.getPlace().length()));
+                            }
                             if (p.getAddress().length() >= 17) {
                                 System.out.print(p.getAddress().substring(0, 17));
                                 System.out.print("...");
-                            } else System.out.print(p.getAddress());
-                            System.out.print(space.repeat(20 - p.getAddress().length()));
+                            } else {
+                                System.out.print(p.getAddress());
+                                System.out.print(space.repeat(20 - p.getAddress().length()));
+                            }
                             System.out.print(p.getPhone_num());
                             if (p.getPhone_num() != null)
                                 System.out.print(space.repeat(20 - p.getPhone_num().length()));

@@ -200,7 +200,7 @@ public class Main {
                 }
             }
             do{
-                System.out.println("To search for any patient type 1, to see your patient list again type 2, to exit type 0");
+                System.out.println("\nTo search for any patient type 1, to see your patient list again type 2, to exit type 0");
                 String input = new String("");
                 input = in.nextLine();
                 if (input.equals("0"))return;
@@ -209,34 +209,34 @@ public class Main {
                     String search = new String(in.nextLine());
                     System.out.println("Patient             Place               Address             Phone number        Birth date          Health insurance");
                     for (Patient p : patients) {
-                        String space = " ";
-                        if(p.getName().length()>=17) {
-                            System.out.print(p.getName().substring(0, 17));
-                            System.out.print("...");
+                        if(p.getName().contains(search)){
+                            String space = " ";
+                            if (p.getName().length() >= 17) {
+                                System.out.print(p.getName().substring(0, 17));
+                                System.out.print("...");
+                            } else System.out.print(p.getName());
+                            System.out.print(space.repeat(20 - p.getName().length()));
+                            if (p.getPlace().length() >= 17) {
+                                System.out.print(p.getPlace().substring(0, 17));
+                                System.out.print("...");
+                            } else System.out.print(p.getPlace());
+                            System.out.print(space.repeat(20 - p.getPlace().length()));
+                            if (p.getAddress().length() >= 17) {
+                                System.out.print(p.getAddress().substring(0, 17));
+                                System.out.print("...");
+                            } else System.out.print(p.getAddress());
+                            System.out.print(space.repeat(20 - p.getAddress().length()));
+                            System.out.print(p.getPhone_num());
+                            if (p.getPhone_num() != null)
+                                System.out.print(space.repeat(20 - p.getPhone_num().length()));
+                            else System.out.print(space.repeat(16));
+                            System.out.print(p.getBirth_date());
+                            System.out.print(space.repeat(20 - p.getBirth_date().toString().length()));
+                            System.out.println(p.isHealth_insurance());
                         }
-                        else System.out.print(p.getName());
-                        System.out.print(space.repeat(20-p.getName().length()));
-                        if(p.getPlace().length()>=17) {
-                            System.out.print(p.getPlace().substring(0, 17));
-                            System.out.print("...");
-                        }
-                        else System.out.print(p.getPlace());
-                        System.out.print(space.repeat(20-p.getPlace().length()));
-                        if(p.getAddress().length()>=17) {
-                            System.out.print(p.getAddress().substring(0, 17));
-                            System.out.print("...");
-                        }
-                        else System.out.print(p.getAddress());
-                        System.out.print(space.repeat(20-p.getAddress().length()));
-                        System.out.print(p.getPhone_num());
-                        if(p.getPhone_num() != null)
-                            System.out.print(space.repeat(20-p.getPhone_num().length()));
-                        else System.out.print(space.repeat(20));
-                        System.out.print(p.getBirth_date());
-                        System.out.print(space.repeat(20-p.getBirth_date().toString().length()));
-                        System.out.println(p.isHealth_insurance());
                     }
                 }
+                if(input.equals("2"))break;
             }while(true);
         }while(true);
     }

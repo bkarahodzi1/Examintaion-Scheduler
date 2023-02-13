@@ -189,7 +189,11 @@ public class Main {
                 for (Patient p : patients) {
                     if (e.getPatient().equals(p)) {
                         String space = " ";
-                        System.out.print(p.getName());
+                        if(p.getName().length()>=17) {
+                            System.out.print(p.getName().substring(0,17));
+                            System.out.print("...");
+                        }
+                        else System.out.print(p.getName());
                         System.out.print(space.repeat(20-p.getName().length()));
                         System.out.println(e.getDiagnosis());
                     }
@@ -203,10 +207,34 @@ public class Main {
                 else if(input.equals("1")){
                     System.out.println("Search: ");
                     String search = new String(in.nextLine());
-                    for (Examination e : exams) {
-                        for (Patient p : patients) {
-                            if (e.getPatient().equals(p) && p.getName().contains(search)) System.out.println(p.getName() + " " + e.getDiagnosis());
+                    System.out.println("Patient             Place               Address             Phone number        Birth date          Health insurance");
+                    for (Patient p : patients) {
+                        String space = " ";
+                        if(p.getName().length()>=17) {
+                            System.out.print(p.getName().substring(0, 17));
+                            System.out.print("...");
                         }
+                        else System.out.print(p.getName());
+                        System.out.print(space.repeat(20-p.getName().length()));
+                        if(p.getPlace().length()>=17) {
+                            System.out.print(p.getPlace().substring(0, 17));
+                            System.out.print("...");
+                        }
+                        else System.out.print(p.getPlace());
+                        System.out.print(space.repeat(20-p.getPlace().length()));
+                        if(p.getAddress().length()>=17) {
+                            System.out.print(p.getAddress().substring(0, 17));
+                            System.out.print("...");
+                        }
+                        else System.out.print(p.getAddress());
+                        System.out.print(space.repeat(20-p.getAddress().length()));
+                        System.out.print(p.getPhone_num());
+                        if(p.getPhone_num() != null)
+                            System.out.print(space.repeat(20-p.getPhone_num().length()));
+                        else System.out.print(space.repeat(20));
+                        System.out.print(p.getBirth_date());
+                        System.out.print(space.repeat(20-p.getBirth_date().toString().length()));
+                        System.out.println(p.isHealth_insurance());
                     }
                 }
             }while(true);

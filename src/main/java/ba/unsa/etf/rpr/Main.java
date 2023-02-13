@@ -184,7 +184,7 @@ public class Main {
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
         do{
-            System.out.println("Patient             Diagnosis");
+            System.out.println("Your patients:\nPatient             Diagnosis");
             for (Examination e : exams) {
                 for (Patient p : patients) {
                     if (e.getPatient().equals(p)) {
@@ -239,6 +239,7 @@ public class Main {
                 else if(input.equals("2"))break;
                 else if(input.equals("3")){
                     System.out.println("All patients: ");
+                    System.out.println("Patient             Place               Address             Phone number        Birth date          Health insurance");
                     for (Patient p : patients) {
                         String space = " ";
                         if (p.getName().length() >= 17) {

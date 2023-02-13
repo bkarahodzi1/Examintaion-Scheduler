@@ -59,10 +59,10 @@ public class Main {
         return true;
     }
 
-    public static boolean CreateAccount() {
-        String Specialization = new String("");
+    public static boolean CreateAccount() throws HospitalException {
+        String specialization = new String("");
         String name = new String("");
-        String Seniority = new String("");
+        String seniority = new String("");
         String username = new String("");
         String password = new String("");
         String passrepeat = new String("");
@@ -84,9 +84,9 @@ public class Main {
         do {
             System.out.println("Seniority: ");
             Scanner in = new Scanner(System.in);
-            Seniority = in.nextLine();
-            int SenInt = Integer.parseInt(Seniority);
-            if(Seniority.equals("") || Seniority.matches(".*[a-zA-z].*") || SenInt<0 || SenInt>45)
+            seniority = in.nextLine();
+            int SenInt = Integer.parseInt(seniority);
+            if(seniority.equals("") || seniority.matches(".*[a-zA-z].*") || SenInt<0 || SenInt>45)
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
@@ -101,8 +101,8 @@ public class Main {
             List<String> Specializations = new ArrayList<String>(Arrays.asList("Anatomical Pathology", "Anesthesiology", "Cardiology", "Cardiovascular/Thoracic Surgery", "Clinical Immunology/Allergy", "Critical Care Medicine", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology and Metabolism", "Family Medicine", "Gastroenterology", "General Internal Medicine", "General Surgery", "General/Clinical Pathology", "Geriatric Medicine", "Hematology", "Medical Biochemistry", "Medical Genetics", "Medical Microbiology and Infectious Diseases", "Medical Oncology", "Nephrology", "Neurology", "Neurosurgery", "Nuclear Medicine", "Obstetrics/Gynecology", "Occupational Medicine", "Ophthalmology", "Orthopedic Surgery", "Otolaryngology", "Pediatrics", "Physical Medicine and Rehabilitation (PM & R)", "Plastic Surgery", "Psychiatry", "Public Health and Preventive Medicine (PhPm)", "Radiation Oncology", "Respirology", "Rheumatology", "Urology"));
             System.out.println("Specialization: ");
             Scanner in = new Scanner(System.in);
-            Specialization = in.nextLine();
-            if(!Specializations.contains(Specialization))
+            specialization = in.nextLine();
+            if(!Specializations.contains(specialization))
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
@@ -152,6 +152,14 @@ public class Main {
             }
             break;
         }while(true);
+        Doctor doctor = new Doctor();
+        doctor.setName(name);
+        int sen = Integer.parseInt(seniority);
+        doctor.setSeniority(sen);
+        doctor.setSpecialization(specialization);
+        doctor.setUsername(username);
+        doctor.setPassword(password);
+        DaoFactory.DoctorDao().add(doctor);
         return true;
     }
 

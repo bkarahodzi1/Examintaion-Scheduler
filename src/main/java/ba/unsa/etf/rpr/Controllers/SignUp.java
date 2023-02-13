@@ -97,6 +97,15 @@ public class SignUp implements Initializable {
             label2.setPrefHeight(0);
             return;
         }
+        if(DaoFactory.DoctorDao().usernameExists(UsernameId.getText())) {
+            label4.setPrefHeight(0);
+            label5.setPrefHeight(0);
+            label3.setText("Username already exists!");
+            label3.setPrefHeight(USE_COMPUTED_SIZE);
+            label1.setPrefHeight(0);
+            label2.setPrefHeight(0);
+            return;
+        }
         if(PasswordId.getText().isEmpty()) {
             label4.setPrefHeight(USE_COMPUTED_SIZE);
             label5.setPrefHeight(0);

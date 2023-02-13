@@ -29,6 +29,7 @@ public class LogIn {
     public GridPane WindowId;
     public Label ErrorId;
     public Label PasswordError;
+    public static final DoctorManager doctorManager = new DoctorManager();
 
     public void LogInProcess(ActionEvent ignoredActionEvent) throws IOException {
         login();
@@ -49,7 +50,6 @@ public class LogIn {
         }
     }
     private void login() throws IOException{
-        DoctorManager doctorManager = new DoctorManager();
         try{
             doctorManager.getAll();
             if(UsernameId.getText().trim().isEmpty()) {

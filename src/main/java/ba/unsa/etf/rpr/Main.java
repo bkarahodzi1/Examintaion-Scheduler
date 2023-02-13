@@ -98,7 +98,7 @@ public class Main {
             Scanner in = new Scanner(System.in);
             seniority = in.nextLine();
             int SenInt = Integer.parseInt(seniority);
-            if(seniority.equals("") || seniority.matches(".*[a-zA-z].*") || SenInt<0 || SenInt>45)
+            if(!doctorManager.isSeniorityValid(seniority))
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();

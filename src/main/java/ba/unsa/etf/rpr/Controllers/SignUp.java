@@ -49,14 +49,14 @@ public class SignUp implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        DoctorManager doctorManager = new DoctorManager();
         SpecId.setValue("--Select specialization--");
         SpecId.getItems().setAll("Anatomical Pathology", "Anesthesiology", "Cardiology", "Cardiovascular/Thoracic Surgery", "Clinical Immunology/Allergy", "Critical Care Medicine", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology and Metabolism", "Family Medicine", "Gastroenterology", "General Internal Medicine", "General Surgery", "General/Clinical Pathology", "Geriatric Medicine", "Hematology", "Medical Biochemistry", "Medical Genetics", "Medical Microbiology and Infectious Diseases", "Medical Oncology", "Nephrology", "Neurology", "Neurosurgery", "Nuclear Medicine", "Obstetrics/Gynecology", "Occupational Medicine", "Ophthalmology", "Orthopedic Surgery", "Otolaryngology", "Pediatrics", "Physical Medicine and Rehabilitation (PM & R)", "Plastic Surgery", "Psychiatry", "Public Health and Preventive Medicine (PhPm)", "Radiation Oncology", "Respirology", "Rheumatology", "Urology");
         SpinnerValueFactory<Integer> spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0);
         this.SeniorityId.setValueFactory(spin);
         SeniorityId.setEditable(true);
         PasswordId.textProperty().addListener((observableValue, s, t1) -> {
-            if(PasswordId.getText().length()<5 || !PasswordId.getText().matches(".*[a-zA-Z].*") || !PasswordId.getText().matches(".*[0-9].*")){
+            if(!doctorManager.isPasswordValid(PasswordId.getText())){
                 PasswordId.setStyle("-fx-background-color: #FFB6C1");
                 label4.setText("Password has to contain at least 5 characters,\n at least one letter and one number\n");
                 label4.setPrefHeight(USE_COMPUTED_SIZE);
@@ -116,7 +116,7 @@ public class SignUp implements Initializable {
             label3.setPrefHeight(0);
             return;
         }
-        if(!RepeatId.getText().equals(PasswordId.getText())) {
+        if(doctorManager.doPasswordsMatch(RepeatId.getText(),PasswordId.getText())) {
             label1.setPrefHeight(0);
             label2.setPrefHeight(0);
             label3.setPrefHeight(0);

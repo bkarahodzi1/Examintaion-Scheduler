@@ -6,7 +6,11 @@ import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 
 import java.util.List;
-
+/***
+ * Business Logic Layer for management of Examinations
+ *
+ * @author Berin Karahodžić
+ */
 public class ExaminationManager {
     public List<Examination> getByDoctor(String user) throws HospitalException{
         return DaoFactory.ExaminationDao().getByDoctor(user);

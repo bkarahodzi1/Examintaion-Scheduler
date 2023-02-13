@@ -7,6 +7,11 @@ import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import java.util.List;
 
 public class PatientManager {
+    /***
+     * Business Logic Layer for management of Patients
+     *
+     * @author Berin Karahodžić
+     */
     public Patient getById(int id) throws HospitalException {
         return DaoFactory.PatientDao().getById(id);
     }

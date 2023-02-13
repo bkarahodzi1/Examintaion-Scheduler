@@ -6,6 +6,18 @@ public class Doctor implements Id {
     private int id, seniority;
     private String name, specialization, username, password;
 
+    public Doctor() {
+    }
+
+    public Doctor(int id, String name, int seniority, String specialization, String username, String password) {
+        this.id = id;
+        this.seniority = seniority;
+        this.name = name;
+        this.specialization = specialization;
+        this.username = username;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }

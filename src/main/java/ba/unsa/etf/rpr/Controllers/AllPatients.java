@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Business.PatientManager;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Patient;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
@@ -62,10 +63,11 @@ public class AllPatients implements Initializable {
     }
 
     public ObservableList<Patient> getPatientInfo(String name) throws IOException, HospitalException {
+        PatientManager patientManager = new PatientManager();
         ObservableList<Patient> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
-        List<Patient> patients = DaoFactory.PatientDao().getAll();
+        List<Patient> patients = patientManager.getAll();
         for(Patient p : patients) {
             if(name.equals("") || p.getName().equals(name))
                 patientInfo.add(new Patient(p.getId(),p.getName(), p.getPlace(),p.getAddress(),p.getPhone_num(),p.getBirth_date(),p.isHealth_insurance()));
@@ -96,38 +98,44 @@ public class AllPatients implements Initializable {
     }
 
     public void NameEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setName(patientStringCellEditEvent.getNewValue());
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 
     public void PlaceEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setPlace(patientStringCellEditEvent.getNewValue());
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 
     public void AddressEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setAddress(patientStringCellEditEvent.getNewValue());
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 
     public void PhoneEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setPhone_num(patientStringCellEditEvent.getNewValue());
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 
     public void BirthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException, ParseException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setBirth_date(new SimpleDateFormat("dd/MM/yyyy").parse(patientStringCellEditEvent.getNewValue()));
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 
     public void HealthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
+        PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
         patient.setHealth_insurance(patientStringCellEditEvent.getNewValue().equals("true"));
-        DaoFactory.PatientDao().update(patient);
+        patientManager.update(patient);
     }
 }

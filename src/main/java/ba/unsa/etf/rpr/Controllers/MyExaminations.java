@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Business.ExaminationManager;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
@@ -50,6 +51,7 @@ public class MyExaminations implements Initializable {
     }
 
     public ObservableList<Examination> getPatientInfo(String name) throws IOException, HospitalException {
+        ExaminationManager examinationManager = new ExaminationManager();
         ObservableList<Examination> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
@@ -57,7 +59,7 @@ public class MyExaminations implements Initializable {
         Scene tableViewScene = new Scene(tableViewParent);
         LogIn controller = loader.getController();
         String user = controller.getDoctor().getUsername();
-        List<Examination> exams = DaoFactory.ExaminationDao().getAll();
+        List<Examination> exams = examinationManager.getAll();
         for(Examination e : exams) {
             if((name.equals("") || e.getPatient().getName().equals(name)) && e.getDoctor().getUsername().equals(user))
                 patientInfo.add(new Examination(e.getDate(), e.getPatient(),e.getDiagnosis(),e.getTreatment()));

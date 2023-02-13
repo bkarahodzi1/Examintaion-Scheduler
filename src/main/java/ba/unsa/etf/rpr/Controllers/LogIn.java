@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Business.DoctorManager;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
@@ -48,8 +49,9 @@ public class LogIn {
         }
     }
     private void login() throws IOException{
+        DoctorManager doctorManager = new DoctorManager();
         try{
-            DaoFactory.DoctorDao().getAll();
+            doctorManager.getAll();
             if(UsernameId.getText().trim().isEmpty()) {
                 UsernameId.setStyle("-fx-border-color: #E92929");
                 PasswordId.setStyle("-fx-border-color: #00000000");
@@ -60,7 +62,7 @@ public class LogIn {
                 ErrorId.setPrefWidth(USE_COMPUTED_SIZE);
                 return;
             }
-            doctor = DaoFactory.DoctorDao().getByUsername(UsernameId.getText());
+            doctor = doctorManager.getByUsername(UsernameId.getText());
             if(doctor.getPassword().equals(PasswordId.getText())){
                 UsernameId.setStyle("-fx-border-color: #00FF00 ");
                 PasswordId.setStyle("-fx-border-color: #00FF00 ");

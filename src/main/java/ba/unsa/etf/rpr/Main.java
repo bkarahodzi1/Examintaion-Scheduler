@@ -1,5 +1,8 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.Business.DoctorManager;
+import ba.unsa.etf.rpr.Business.ExaminationManager;
+import ba.unsa.etf.rpr.Business.PatientManager;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
@@ -42,6 +45,7 @@ public class Main {
 
     private static boolean LogIn(){
         Scanner in = new Scanner(System.in);
+        DoctorManager doctorManager = new DoctorManager();
         String password = "";
         try {
             System.out.print("Username: ");
@@ -49,7 +53,7 @@ public class Main {
             System.out.print("Password: ");
             /*Console console = System.console();
             char[] password = console.readPassword();*/
-            Doctor doc = DaoFactory.DoctorDao().getByUsername(username);
+            Doctor doc = doctorManager.getByUsername(username);
             password = in.nextLine();
             if(!doc.getPassword().equals(password))throw new HospitalException("");
             return true;
@@ -73,6 +77,7 @@ public class Main {
         String username;
         String password;
         String passrepeat;
+        DoctorManager doctorManager = new DoctorManager();
         do {
             System.out.println("Full name: ");
             Scanner in = new Scanner(System.in);
@@ -124,7 +129,7 @@ public class Main {
             System.out.println("Username: ");
             Scanner in = new Scanner(System.in);
             username = in.nextLine();
-            if(DaoFactory.DoctorDao().usernameExists(username)){
+            if(doctorManager.usernameExists(username)){
                 System.out.println("Username already exists.\nTo try again type 1. To go back type anything else.");
                 String input = in.nextLine();
                 if (input.equals("1")) {
@@ -173,7 +178,7 @@ public class Main {
         doctor.setSpecialization(specialization);
         doctor.setUsername(username);
         doctor.setPassword(password);
-        DaoFactory.DoctorDao().add(doctor);
+        doctorManager.add(doctor);
         System.out.println("Account successfully made!\nRedirecting...");
         Thread.sleep(1000);
         LogIn();
@@ -183,9 +188,11 @@ public class Main {
 
     private static void Homepage(String username) throws HospitalException {
         Scanner in = new Scanner(System.in);
+        ExaminationManager examinationManager = new ExaminationManager();
+        PatientManager patientManager = new PatientManager();
         System.out.println("\nWelcome!\n");
-        List<Patient> patients = DaoFactory.PatientDao().getAll();
-        List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
+        List<Patient> patients = patientManager.getAll();
+        List<Examination> exams = examinationManager.getByDoctor(username);
         do{
             System.out.println("Your patients:\nPatient             Diagnosis");
             for (Examination e : exams) {
@@ -221,18 +228,24 @@ public class Main {
                                 if (p.getName().length() >= 17) {
                                     System.out.print(p.getName().substring(0, 17));
                                     System.out.print("...");
-                                } else System.out.print(p.getName());
-                                System.out.print(space.repeat(20 - p.getName().length()));
+                                } else {
+                                    System.out.print(p.getName());
+                                    System.out.print(space.repeat(20 - p.getName().length()));
+                                }
                                 if (p.getPlace().length() >= 17) {
                                     System.out.print(p.getPlace().substring(0, 17));
                                     System.out.print("...");
-                                } else System.out.print(p.getPlace());
-                                System.out.print(space.repeat(20 - p.getPlace().length()));
+                                } else {
+                                    System.out.print(p.getPlace());
+                                    System.out.print(space.repeat(20 - p.getPlace().length()));
+                                }
                                 if (p.getAddress().length() >= 17) {
                                     System.out.print(p.getAddress().substring(0, 17));
                                     System.out.print("...");
-                                } else System.out.print(p.getAddress());
-                                System.out.print(space.repeat(20 - p.getAddress().length()));
+                                } else {
+                                    System.out.print(p.getAddress());
+                                    System.out.print(space.repeat(20 - p.getAddress().length()));
+                                }
                                 System.out.print(p.getPhone_num());
                                 if (p.getPhone_num() != null)
                                     System.out.print(space.repeat(20 - p.getPhone_num().length()));

@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Business.DoctorManager;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
@@ -73,6 +74,7 @@ public class SignUp implements Initializable {
     }
 
     private void signUp() throws HospitalException, IOException {
+        DoctorManager doctorManager = new DoctorManager();
         if(NameId.getText().trim().isEmpty()){
             label5.setPrefHeight(0);
             label4.setPrefHeight(0);
@@ -97,7 +99,7 @@ public class SignUp implements Initializable {
             label2.setPrefHeight(0);
             return;
         }
-        if(DaoFactory.DoctorDao().usernameExists(UsernameId.getText())) {
+        if(doctorManager.usernameExists(UsernameId.getText())) {
             label4.setPrefHeight(0);
             label5.setPrefHeight(0);
             label3.setText("Username already exists!");
@@ -128,7 +130,7 @@ public class SignUp implements Initializable {
         d1.setSeniority(SeniorityId.getValue());
         d1.setUsername(UsernameId.getText());
         d1.setPassword(PasswordId.getText());
-        DaoFactory.DoctorDao().add(d1);
+        doctorManager.add(d1);
         Stage closing = (Stage) label1.getScene().getWindow();
         closing.close();
         Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/PopUp.fxml")));

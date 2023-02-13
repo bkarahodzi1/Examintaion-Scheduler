@@ -184,7 +184,7 @@ public class Main {
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
         do{
-            System.out.println("Patient               Diagnosis");
+            System.out.println("Patient             Diagnosis");
             for (Examination e : exams) {
                 for (Patient p : patients) {
                     if (e.getPatient().equals(p)) {

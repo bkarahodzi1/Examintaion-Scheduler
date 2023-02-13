@@ -2,8 +2,12 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Dao.Dao;
 import ba.unsa.etf.rpr.Dao.DaoFactory;
+import ba.unsa.etf.rpr.Domain.Examination;
+import ba.unsa.etf.rpr.Domain.Patient;
+import ba.unsa.etf.rpr.Domain.PatientExam;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import ba.unsa.etf.rpr.Domain.Doctor;
+import com.sun.tools.jdeprscan.scan.Scan;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -16,8 +20,8 @@ import static javax.xml.bind.DatatypeConverter.parseInteger;
 public class Main {
     public static void main(String[] args) throws HospitalException, InterruptedException {
         String input;
+        String username = new String();
         do {
-            String username = new String();
             System.out.println("Press 1 to log in, 2 to create a new account or 0 to exit. Than press enter.");
             Scanner in = new Scanner(System.in);
             input = new String(in.nextLine());
@@ -34,8 +38,11 @@ public class Main {
             }
             else System.out.println("Please follow the given instructions.");
         } while (true);
+        Homepage(username);
     }
-    public static boolean LogIn(){
+
+
+    private static boolean LogIn(){
         Scanner in = new Scanner(System.in);
         try {
             System.out.print("Username: ");
@@ -59,7 +66,9 @@ public class Main {
         return true;
     }
 
-    public static boolean CreateAccount() throws HospitalException, InterruptedException {
+
+
+    private static boolean CreateAccount() throws HospitalException, InterruptedException {
         String specialization = new String("");
         String name = new String("");
         String seniority = new String("");
@@ -173,4 +182,19 @@ public class Main {
         return true;
     }
 
+
+    private static void Homepage(String username) throws HospitalException {
+        Scanner in = new Scanner(System.in);
+        System.out.println("\nWelcome!\n");
+        List<Patient> patients = DaoFactory.PatientDao().getAll();
+        List<Examination> exams = DaoFactory.ExaminationDao().getByDoctor(username);
+        for(Examination e: exams){
+            for(Patient p : patients){
+                if(e.getPatient().equals(p)) System.out.println(p.getName()+" "+e.getDiagnosis());
+            }
+        }
+        System.out.println("To search for any patient type 1, to exit type 0");
+        String input = new String("");
+        input = in.nextLine();
+    }
 }

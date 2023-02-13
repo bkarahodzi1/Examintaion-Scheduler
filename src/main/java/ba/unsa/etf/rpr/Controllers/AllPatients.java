@@ -1,13 +1,10 @@
 package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Dao.DaoFactory;
-import ba.unsa.etf.rpr.Domain.Examination;
 import ba.unsa.etf.rpr.Domain.Patient;
-import ba.unsa.etf.rpr.Domain.PatientExam;
 import ba.unsa.etf.rpr.Exceptions.HospitalException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -18,7 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +22,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AllPatients implements Initializable {
@@ -46,17 +43,19 @@ public class AllPatients implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            PPINId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
-            NameId.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
-            PlaceId.setCellValueFactory(new PropertyValueFactory<Patient, String>("place"));
-            AddressID.setCellValueFactory(new PropertyValueFactory<Patient, String>("address"));
-            PhoneId.setCellValueFactory(new PropertyValueFactory<Patient, String>("phone_num"));
-            BirthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("birth_date"));
-            HealthId.setCellValueFactory(new PropertyValueFactory<Patient, String>("health_insurance"));
+            PPINId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            NameId.setCellValueFactory(new PropertyValueFactory<>("name"));
+            PlaceId.setCellValueFactory(new PropertyValueFactory<>("place"));
+            AddressID.setCellValueFactory(new PropertyValueFactory<>("address"));
+            PhoneId.setCellValueFactory(new PropertyValueFactory<>("phone_num"));
+            BirthId.setCellValueFactory(new PropertyValueFactory<>("birth_date"));
+            HealthId.setCellValueFactory(new PropertyValueFactory<>("health_insurance"));
             tableViewId.setItems(getPatientInfo(""));
             tableViewId.setEditable(true);
             NameId.setCellFactory(TextFieldTableCell.forTableColumn());
             PlaceId.setCellFactory(TextFieldTableCell.forTableColumn());
+            AddressID.setCellFactory(TextFieldTableCell.forTableColumn());
+            PhoneId.setCellFactory(TextFieldTableCell.forTableColumn());
         } catch (IOException | HospitalException e) {
             throw new RuntimeException(e);
         }
@@ -66,10 +65,6 @@ public class AllPatients implements Initializable {
         ObservableList<Patient> patientInfo = FXCollections.observableArrayList();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/LogIn.fxml"));
-        Parent tableViewParent = loader.load();
-        Scene tableViewScene = new Scene(tableViewParent);
-        LogIn controller = loader.getController();
-        String user = controller.getDoctor().getUsername();
         List<Patient> patients = DaoFactory.PatientDao().getAll();
         for(Patient p : patients) {
             if(name.equals("") || p.getName().equals(name))
@@ -78,23 +73,23 @@ public class AllPatients implements Initializable {
         return patientInfo;
     }
 
-    public void SearchForPatient(ActionEvent actionEvent) throws HospitalException, IOException {
+    public void SearchForPatient() throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
-    public void KEyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
+    public void KEyPressed() throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
 
-    public void MyPatients(ActionEvent actionEvent) throws IOException {
-        Parent home = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+    public void MyPatients() throws IOException {
+        Parent home = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
         Scene homescene = new Scene (home);
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(homescene);
     }
-    public void MyExaminations(ActionEvent actionEvent) throws IOException {
-        Parent myexams = FXMLLoader.load(getClass().getResource("/fxml/MyExaminations.fxml"));
+    public void MyExaminations() throws IOException {
+        Parent myexams = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MyExaminations.fxml")));
         Scene myexamsscene = new Scene (myexams);
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(myexamsscene);

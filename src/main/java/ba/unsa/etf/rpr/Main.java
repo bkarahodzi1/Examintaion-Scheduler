@@ -60,18 +60,22 @@ public class Main {
     }
 
     public static boolean CreateAccount() {
+        String Specialization = new String("");
+        String name = new String("");
+        String Seniority = new String("");
+        String username = new String("");
+        String password = new String("");
+        String passrepeat = new String("");
         do {
             System.out.println("Full name: ");
             Scanner in = new Scanner(System.in);
-            String name = new String("");
             name = in.nextLine();
             if(name.equals(""))
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
                 if(input.equals("1")){
-                    CreateAccount();
-                    break;
+                    continue;
                 }
                 else return false;
             }
@@ -80,7 +84,6 @@ public class Main {
         do {
             System.out.println("Seniority: ");
             Scanner in = new Scanner(System.in);
-            String Seniority = new String("");
             Seniority = in.nextLine();
             int SenInt = Integer.parseInt(Seniority);
             if(Seniority.equals("") || Seniority.matches(".*[a-zA-z].*") || SenInt<0 || SenInt>45)
@@ -88,8 +91,7 @@ public class Main {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
                 if(input.equals("1")){
-                    CreateAccount();
-                    break;
+                    continue;
                 }
                 else return false;
             }
@@ -99,17 +101,54 @@ public class Main {
             List<String> Specializations = new ArrayList<String>(Arrays.asList("Anatomical Pathology", "Anesthesiology", "Cardiology", "Cardiovascular/Thoracic Surgery", "Clinical Immunology/Allergy", "Critical Care Medicine", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology and Metabolism", "Family Medicine", "Gastroenterology", "General Internal Medicine", "General Surgery", "General/Clinical Pathology", "Geriatric Medicine", "Hematology", "Medical Biochemistry", "Medical Genetics", "Medical Microbiology and Infectious Diseases", "Medical Oncology", "Nephrology", "Neurology", "Neurosurgery", "Nuclear Medicine", "Obstetrics/Gynecology", "Occupational Medicine", "Ophthalmology", "Orthopedic Surgery", "Otolaryngology", "Pediatrics", "Physical Medicine and Rehabilitation (PM & R)", "Plastic Surgery", "Psychiatry", "Public Health and Preventive Medicine (PhPm)", "Radiation Oncology", "Respirology", "Rheumatology", "Urology"));
             System.out.println("Specialization: ");
             Scanner in = new Scanner(System.in);
-            String Specialization = new String("");
             Specialization = in.nextLine();
             if(!Specializations.contains(Specialization))
             {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
                 if(input.equals("1")){
-                    CreateAccount();
-                    break;
+                    continue;
                 }
                 else return false;
+            }
+            break;
+        }while(true);
+        do {
+            System.out.println("Username: ");
+            Scanner in = new Scanner(System.in);
+            username = in.nextLine();
+            if (username.equals("")) {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if (input.equals("1")) {
+                    continue;
+                } else return false;
+            }
+            break;
+        }while(true);
+        do {
+            System.out.println("Password (has to contain at least 5 characters, at least one letter and one number): ");
+            Scanner in = new Scanner(System.in);
+            password = in.nextLine();
+            if (password.length()<5 || !password.matches(".*[a-zA-Z].*") || !password.matches(".*[0-9].*")) {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if (input.equals("1")) {
+                    continue;
+                } else return false;
+            }
+            break;
+        }while(true);
+        do {
+            System.out.println("Repeat password: ");
+            Scanner in = new Scanner(System.in);
+            passrepeat = in.nextLine();
+            if (!passrepeat.equals(password)) {
+                System.out.println("To try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if (input.equals("1")) {
+                    continue;
+                } else return false;
             }
             break;
         }while(true);

@@ -2,7 +2,11 @@ package ba.unsa.etf.rpr.Domain;
 
 import java.util.Date;
 import java.util.Objects;
-
+/**
+ * Class that contains an examination's information
+ *
+ * @author Berin Karahodžić
+ */
 public class Examination implements Id{
     private int id;
     private Date date;

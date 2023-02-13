@@ -2,7 +2,11 @@ package ba.unsa.etf.rpr.Domain;
 
 import java.util.Date;
 import java.util.Objects;
-
+/**
+ * Class that describes the patient
+ *
+ * @author Berin Karahodžić
+ */
 public class Patient implements Id{
     private int id;
     private String name,place,address,phone_num;

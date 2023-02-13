@@ -8,8 +8,17 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL's implementation of DAO
+ *
+ * @author Berin Karahodžić
+ */
 public class PatientDaoSQLImpl extends MainDao<Patient> implements PatientDao{
+    private static final PatientDaoSQLImpl singleton = new PatientDaoSQLImpl();
 
+    public static PatientDaoSQLImpl getSingleton(){
+        return singleton;
+    }
     public PatientDaoSQLImpl() {
         super("patient");
     }

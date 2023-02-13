@@ -14,7 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
+/**
+ * A class that gives the user access to the app through a terminal
+ * It was made to be used for basic information retrieval but to still be usable by any authorised user
+ *
+ * @author Berin Karahodžić
+ */
 public class Main {
     public static void main(String[] args) throws HospitalException, InterruptedException {
         String input;

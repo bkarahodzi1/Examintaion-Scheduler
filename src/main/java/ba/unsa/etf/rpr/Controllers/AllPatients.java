@@ -26,7 +26,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * JavaFX controller for showing all the patients in the database
+ *
+ * @author Berin Karahodžić
+ */
 public class AllPatients implements Initializable {
+    //window fields
     public TableView<Patient> tableViewId;
     public Button searchId;
     public TextField nameSearch;
@@ -41,6 +47,11 @@ public class AllPatients implements Initializable {
     public Button myExaminationsId;
     public TableColumn <Patient,Integer> PPINId;
 
+    /**
+     * Initialize method for setting up the tableview
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -62,6 +73,13 @@ public class AllPatients implements Initializable {
         }
     }
 
+    /**
+     * function for getting the patient info of all patients
+     * @param name
+     * @return Observable list to put into tableview
+     * @throws IOException
+     * @throws HospitalException
+     */
     public ObservableList<Patient> getPatientInfo(String name) throws IOException, HospitalException {
         PatientManager patientManager = new PatientManager();
         ObservableList<Patient> patientInfo = FXCollections.observableArrayList();
@@ -75,21 +93,41 @@ public class AllPatients implements Initializable {
         return patientInfo;
     }
 
+    /**
+     * button for beginning the search of patients
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void SearchForPatient() throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
+
+    /**
+     * does the same as pressing search when enter is pressed
+     * @throws HospitalException
+     * @throws IOException
+     */
 
     public void KEyPressed() throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
-
+    /**
+     * function for setting the home-screen on stage
+     * @throws IOException
+     */
     public void MyPatients() throws IOException {
         Parent home = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Home.fxml")));
         Scene homescene = new Scene (home);
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(homescene);
     }
+
+    /**
+     * function for setting the MyExaminations scene in stage
+     * shows all the doctor's patients
+     * @throws IOException
+     */
     public void MyExaminations() throws IOException {
         Parent myexams = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MyExaminations.fxml")));
         Scene myexamsscene = new Scene (myexams);
@@ -97,6 +135,11 @@ public class AllPatients implements Initializable {
         window.setScene(myexamsscene);
     }
 
+    /**
+     * function that enables double-click altering of patient info (name)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     */
     public void NameEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
@@ -104,6 +147,11 @@ public class AllPatients implements Initializable {
         patientManager.update(patient);
     }
 
+    /**
+     * function that enables double-click altering of patient info (place)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     */
     public void PlaceEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
@@ -111,6 +159,11 @@ public class AllPatients implements Initializable {
         patientManager.update(patient);
     }
 
+    /**
+     * function that enables double-click altering of patient info (address)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     */
     public void AddressEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
@@ -118,6 +171,11 @@ public class AllPatients implements Initializable {
         patientManager.update(patient);
     }
 
+    /**
+     * function that enables double-click altering of patient info (phone number)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     */
     public void PhoneEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
@@ -125,6 +183,12 @@ public class AllPatients implements Initializable {
         patientManager.update(patient);
     }
 
+    /**
+     * function that enables double-click altering of patient info (birth date)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     * @throws ParseException
+     */
     public void BirthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException, ParseException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();
@@ -132,6 +196,11 @@ public class AllPatients implements Initializable {
         patientManager.update(patient);
     }
 
+    /**
+     * function that enables double-click altering of patient info (health insurance)
+     * @param patientStringCellEditEvent
+     * @throws HospitalException
+     */
     public void HealthEdit(TableColumn.CellEditEvent<Patient, String> patientStringCellEditEvent) throws HospitalException {
         PatientManager patientManager = new PatientManager();
         Patient patient = tableViewId.getSelectionModel().getSelectedItem();

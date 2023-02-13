@@ -30,8 +30,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Home implements Initializable {
+/**
+ * JavaFX controller for showing home screen and the patients of the user
+ *
+ * @author Berin Karahodžić
+ */
 
+public class Home implements Initializable {
+    //window fields
     public TableView<PatientExam> tableViewId;
     public TableColumn<PatientExam, String> patientId;
     public TableColumn<PatientExam, String> diagnosisId;
@@ -40,6 +46,11 @@ public class Home implements Initializable {
     public Button allPatientsId;
     public Button myExaminationsId;
 
+    /**
+     * initialize method to set up the tableview
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -51,6 +62,13 @@ public class Home implements Initializable {
         }
     }
 
+    /**
+     * method for loading the patient's info
+     * @param name
+     * @return
+     * @throws IOException
+     * @throws HospitalException
+     */
     public ObservableList<PatientExam> getPatientInfo(String name) throws IOException, HospitalException {
         ExaminationManager examinationManager = new ExaminationManager();
         PatientManager patientManager = new PatientManager();
@@ -72,14 +90,31 @@ public class Home implements Initializable {
         return patientInfo;
     }
 
+    /**
+     * button for searching up a certain patient
+     * @param actionEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void SearchForPatient(ActionEvent actionEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
+    /**
+     * method does the same as clicking the search button when enter is pressed
+     * @param keyEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void KEyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
+    /**
+     * method for loading the AllPatients scene to the window
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AllPatients(ActionEvent actionEvent) throws IOException {
         Parent allpateints = FXMLLoader.load(getClass().getResource("/fxml/AllPatients.fxml"));
         Scene allpatientsscene = new Scene (allpateints);
@@ -87,6 +122,11 @@ public class Home implements Initializable {
         window.setScene(allpatientsscene);
     }
 
+    /**
+     * method for loading the home-screen to the window
+     * @param actionEvent
+     * @throws IOException
+     */
     public void MyExaminations(ActionEvent actionEvent) throws IOException {
         Parent myexams = FXMLLoader.load(getClass().getResource("/fxml/MyExaminations.fxml"));
         Scene myexamsscene = new Scene (myexams);

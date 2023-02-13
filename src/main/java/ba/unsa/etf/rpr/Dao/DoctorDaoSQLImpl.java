@@ -9,7 +9,17 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL's implementation of the DAO
+ *
+ * @author Berin Karahodžić
+ */
 public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
+    private static final DoctorDaoSQLImpl singleton = new DoctorDaoSQLImpl();
+
+    public static DoctorDaoSQLImpl getSingleton(){
+        return singleton;
+    }
     public DoctorDaoSQLImpl() {
         super("doctor");
     }

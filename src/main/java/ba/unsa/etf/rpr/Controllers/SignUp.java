@@ -28,9 +28,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+/***
+ * JavaFX controller for creating a new user
+ *
+ * @author Berin Karahodžić
+ */
 
 public class SignUp implements Initializable {
-
+//window fields
     public ChoiceBox<String> SpecId;
     public Spinner<Integer> SeniorityId;
     public TextField NameId;
@@ -47,6 +52,11 @@ public class SignUp implements Initializable {
     public RowConstraints Row2;
     public Button logBackInId;
 
+    /**
+     * initialize method for setting up the fields
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DoctorManager doctorManager = new DoctorManager();
@@ -69,10 +79,21 @@ public class SignUp implements Initializable {
         });
     }
 
+    /**
+     * method that begins the creation of a new user when button is clicked
+     * @param ignoredActionEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void CreateClicked(ActionEvent ignoredActionEvent) throws HospitalException, IOException {
         signUp();
     }
 
+    /**
+     * function for creating a new user
+     * @throws HospitalException
+     * @throws IOException
+     */
     private void signUp() throws HospitalException, IOException {
         DoctorManager doctorManager = new DoctorManager();
         if(NameId.getText().trim().isEmpty()){
@@ -154,12 +175,12 @@ public class SignUp implements Initializable {
         delay2.play();
     }
 
-    public void KeyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
-        if(keyEvent.getCode().equals(KeyCode.ENTER)){
-            signUp();
-        }
-    }
 
+    /**
+     * method to go back to log in screen
+     * @param actionEvent
+     * @throws IOException
+     */
     public void LogBackIn(ActionEvent actionEvent) throws IOException {
         Stage closing = (Stage) label1.getScene().getWindow();
         Stage primaryStage = new Stage();
@@ -172,6 +193,10 @@ public class SignUp implements Initializable {
         closing.close();
     }
 
+    /**
+     * method to change typing cursor to next field
+     * @param keyEvent
+     */
     public void NamePressedEnter(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
@@ -179,6 +204,10 @@ public class SignUp implements Initializable {
         }
     }
 
+    /**
+     * method to change typing cursor to next field
+     * @param keyEvent
+     */
     public void SeniorityPressedEnter(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
@@ -186,6 +215,10 @@ public class SignUp implements Initializable {
         }
     }
 
+    /**
+     * method to change typing cursor to next field
+     * @param keyEvent
+     */
     public void UsernamePressedEnter(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
@@ -193,6 +226,10 @@ public class SignUp implements Initializable {
         }
     }
 
+    /**
+     * method to change typing cursor to next field
+     * @param keyEvent
+     */
     public void PasswordPressedEnter(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
@@ -200,6 +237,12 @@ public class SignUp implements Initializable {
         }
     }
 
+    /**
+     * method that does the same as sign up button when enter is pressed on the last field
+     * @param keyEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void RepeatPressedEnter(KeyEvent keyEvent) throws HospitalException, IOException {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {

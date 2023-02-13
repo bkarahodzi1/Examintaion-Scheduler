@@ -2,6 +2,12 @@ package ba.unsa.etf.rpr.Domain;
 
 import java.util.Objects;
 
+/**
+ * Class that describes the user
+ *
+ * @author Berin Karahodžić
+ */
+
 public class Doctor implements Id {
     private int id, seniority;
     private String name, specialization, username, password;

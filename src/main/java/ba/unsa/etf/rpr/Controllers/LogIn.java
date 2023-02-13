@@ -20,7 +20,14 @@ import java.util.Objects;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/***
+ * JavaFX controller for showing the login window
+ *
+ * @author Berin Karahodžić
+ */
+
 public class LogIn {
+    //window fields
     private static Doctor doctor;
     public Button LoginId;
     public Hyperlink CreateAccId;
@@ -31,24 +38,40 @@ public class LogIn {
     public Label PasswordError;
     public static final DoctorManager doctorManager = new DoctorManager();
 
+    /**
+     * button for beginning the log in process
+     * @param ignoredActionEvent
+     * @throws IOException
+     */
     public void LogInProcess(ActionEvent ignoredActionEvent) throws IOException {
         login();
     }
 
-
+    /**
+     * changes the typing cursor to the password field when enter is pressed on username entering
+     * @param keyEvent
+     */
     public void KeyPressed(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
             PasswordId.requestFocus();
         }
     }
-
+    /**
+     * does the same as clicking the log in button when enter is pressed
+     * @param keyEvent
+     */
     public void KeyPressed2(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode().equals(KeyCode.ENTER))
         {
             login();
         }
     }
+
+    /**
+     * function that is used to log a user in
+     * @throws IOException
+     */
     private void login() throws IOException{
         try{
             doctorManager.getAll();
@@ -96,6 +119,11 @@ public class LogIn {
         }
     }
 
+    /**
+     * method that changes stages to the sign-up when clicked
+     * @param ignoredActionEvent
+     * @throws IOException
+     */
     public void UrlClicked(ActionEvent ignoredActionEvent) throws IOException {
         Stage closing = (Stage) LoginId.getScene().getWindow();
         Stage primaryStage = new Stage();
@@ -107,6 +135,11 @@ public class LogIn {
         primaryStage.show();
         closing.close();
     }
+
+    /**
+     * method that returns the current user
+     * @return
+     */
     public Doctor getDoctor(){
         return doctor;
     }

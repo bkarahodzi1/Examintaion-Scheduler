@@ -1,9 +1,14 @@
 package ba.unsa.etf.rpr.Dao;
 
+/**
+ * Factory for Dao singleton implementation
+ *
+ * @author Berin Karahodžić
+ */
 public class DaoFactory {
-    private static final DoctorDao DoctorDao = new DoctorDaoSQLImpl();
+    private static final DoctorDao DoctorDao = DoctorDaoSQLImpl.getSingleton();
     private static final ExaminationDao ExaminationDao = ExaminationDaoSQLImpl.getSingleton();
-    private static final PatientDao PatientDao = new PatientDaoSQLImpl();
+    private static final PatientDao PatientDao = PatientDaoSQLImpl.getSingleton();
 
     private DaoFactory(){
     }

@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL's implementation of DAO
+ *
+ * @author Berin Karahodžić
+ */
 public class ExaminationDaoSQLImpl extends MainDao<Examination> implements ExaminationDao{
 
     private static final ExaminationDaoSQLImpl singleton = new ExaminationDaoSQLImpl();

@@ -25,8 +25,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
+/***
+ * JavaFX controller for showing all the users examinations
+ *
+ * @author Berin Karahodžić
+ */
 public class MyExaminations implements Initializable {
+    //window fields
     public TableView<Examination> tableViewId;
     public TableColumn<Examination, String> DateId;
     public TableColumn<Examination, String> PatientId;
@@ -37,6 +42,11 @@ public class MyExaminations implements Initializable {
     public Button myPatientsId;
     public Button allPatientsId;
 
+    /**
+     * initialize method that sets up the tableview
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -50,6 +60,13 @@ public class MyExaminations implements Initializable {
         }
     }
 
+    /**
+     * a method that returns items to be put in the tableview
+     * @param name
+     * @return
+     * @throws IOException
+     * @throws HospitalException
+     */
     public ObservableList<Examination> getPatientInfo(String name) throws IOException, HospitalException {
         ExaminationManager examinationManager = new ExaminationManager();
         ObservableList<Examination> patientInfo = FXCollections.observableArrayList();
@@ -67,21 +84,43 @@ public class MyExaminations implements Initializable {
         return patientInfo;
     }
 
+    /**
+     * button that begins the search of patient entered in search field
+     * @param actionEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void SearchForPatient(ActionEvent actionEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
+    /**
+     * does the same as clicking on search button
+     * @param keyEvent
+     * @throws HospitalException
+     * @throws IOException
+     */
     public void KEyPressed(KeyEvent keyEvent) throws HospitalException, IOException {
         tableViewId.setItems(getPatientInfo(nameSearch.getText()));
     }
 
-
+    /**
+     * method that changes the screen to AllPatients
+     * @param actionEvent
+     * @throws IOException
+     */
     public void AllPatients(ActionEvent actionEvent) throws IOException {
         Parent allpateints = FXMLLoader.load(getClass().getResource("/fxml/AllPatients.fxml"));
         Scene allpatientsscene = new Scene (allpateints);
         Stage window = (Stage) searchId.getScene().getWindow();
         window.setScene(allpatientsscene);
     }
+
+    /**
+     * method that changes the screen to home-screen
+     * @param actionEvent
+     * @throws IOException
+     */
     public void MyPatients(ActionEvent actionEvent) throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
         Scene homescene = new Scene (home);

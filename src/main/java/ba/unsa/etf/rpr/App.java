@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 /**
- * Hello world!
+ * Main class for working with JavaFX framework
+ * Main for GUI
  *
+ * @author Berin Karahodžić
  */
 public class App extends Application
 {

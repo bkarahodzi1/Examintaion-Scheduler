@@ -1,7 +1,11 @@
 package ba.unsa.etf.rpr.Domain;
 
 import java.util.Objects;
-
+/**
+ * Class that contains information of the exam and the user
+ *
+ * @author Berin Karahodžić
+ */
 public class PatientExam {
     private String name;
     private String diagnosis;

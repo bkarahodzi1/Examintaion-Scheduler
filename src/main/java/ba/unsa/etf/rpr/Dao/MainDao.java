@@ -6,6 +6,12 @@ import ba.unsa.etf.rpr.Domain.Id;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Abstract class that implements core DAO CRUD methods for every entity
+ * @param <T>
+ *
+ * @author Berin Karahodžić
+ */
 public abstract class MainDao<T extends Id> implements Dao<T>{
     public static Connection getConnection() {
         return connection;
@@ -29,8 +35,18 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
     public MainDao(String name) {
         this.tableName=name;
     }
-
+    /**
+     * Method for mapping ResultSet into Object
+     * @param rs - result set from database
+     * @return a Bean object for specific table
+     * @throws HospitalException in case of error with db
+     */
     public abstract T convertRow(ResultSet rs) throws HospitalException;
+    /**
+     * Method for mapping Object into Map
+     * @param object - a bean object for specific table
+     * @return key, value sorted map of object
+     */
     public abstract Map<String, Object> convertObject(T object);
 
     public T getById(int id) throws HospitalException {
@@ -142,7 +158,9 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
             throw new HospitalException(e.getMessage(), e);
         }
     }
-
+    /**
+     * Accepts KV storage of column names and return CSV of columns and question marks for insert statement
+     */
     private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
         StringBuilder questions = new StringBuilder();
@@ -160,7 +178,11 @@ public abstract class MainDao<T extends Id> implements Dao<T>{
         }
         return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
-
+    /**
+     * Prepare columns for update statement id=?, name=?, ...
+     * @param row - row to be converted intro string
+     * @return String for update statement
+     */
     private String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
 

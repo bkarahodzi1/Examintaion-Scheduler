@@ -14,7 +14,7 @@ import java.util.Scanner;
 import static javax.xml.bind.DatatypeConverter.parseInteger;
 
 public class Main {
-    public static void main(String[] args) throws HospitalException {
+    public static void main(String[] args) throws HospitalException, InterruptedException {
         String input;
         do {
             String username = new String();
@@ -59,7 +59,7 @@ public class Main {
         return true;
     }
 
-    public static boolean CreateAccount() throws HospitalException {
+    public static boolean CreateAccount() throws HospitalException, InterruptedException {
         String specialization = new String("");
         String name = new String("");
         String seniority = new String("");
@@ -117,6 +117,13 @@ public class Main {
             System.out.println("Username: ");
             Scanner in = new Scanner(System.in);
             username = in.nextLine();
+            if(DaoFactory.DoctorDao().usernameExists(username)){
+                System.out.println("Username already exists.\nTo try again type 1. To go back type anything else.");
+                String input = in.nextLine();
+                if (input.equals("1")) {
+                    continue;
+                } else return false;
+            }
             if (username.equals("")) {
                 System.out.println("To try again type 1. To go back type anything else.");
                 String input = in.nextLine();
@@ -160,6 +167,9 @@ public class Main {
         doctor.setUsername(username);
         doctor.setPassword(password);
         DaoFactory.DoctorDao().add(doctor);
+        System.out.println("Account successfully made!\nRedirecting...");
+        Thread.sleep(1000);
+        LogIn();
         return true;
     }
 

@@ -10,4 +10,5 @@ import java.sql.SQLException;
 public interface DoctorDao extends Dao<Doctor> {
 
     public Doctor getByUsername(String user) throws HospitalException;
+    public boolean usernameExists(String user)throws HospitalException;
 }

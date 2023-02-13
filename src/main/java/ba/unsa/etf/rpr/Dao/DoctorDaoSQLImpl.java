@@ -61,4 +61,23 @@ public class DoctorDaoSQLImpl extends MainDao<Doctor> implements DoctorDao{
             throw new HospitalException(e.getMessage(), e);
         }
     }
+
+    @Override
+    public boolean usernameExists(String user) throws HospitalException {
+        String query = "SELECT * FROM doctor WHERE username = ?";
+        try {
+            PreparedStatement statement = MainDao.getConnection().prepareStatement(query);
+            statement.setString(1, user);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                Doctor result = convertRow(rs);
+                rs.close();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new HospitalException(e.getMessage(), e);
+        }
+    }
 }
